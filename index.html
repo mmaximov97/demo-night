@@ -7,6 +7,9 @@
 <meta name="description" content="Companion page to the Demo Night Belgrade talk: three rules for the context your agents read, the setup behind it, and every tool involved.">
 <meta property="og:title" content="Collect · Curate · Reach">
 <meta property="og:description" content="Three rules for the context your agents read — companion page to the Demo Night Belgrade talk.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:image" content="https://mmaximov97.github.io/demo-night/cypher-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -62,6 +65,13 @@
   .hero p{
     margin:1.5rem auto 0;max-width:32rem;
     color:var(--mute);font-size:1rem;
+  }
+
+  .hero .label{font-size:.63rem;letter-spacing:.09em}
+
+  .mark{
+    display:block;margin:0 auto 1.7rem;
+    width:auto;height:clamp(46px,13vw,58px);
   }
 
   /* ---------- the paper ---------- */
@@ -168,10 +178,23 @@
   .contact .where{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
   .contact .handle{font-weight:600;text-align:right}
 
+  .me{display:flex;align-items:center;gap:1rem;margin:1.7rem 0 0}
+  .me img{
+    width:72px;height:72px;border-radius:50%;object-fit:cover;
+    border:1px solid var(--edge);flex:none;
+  }
+  .me b{display:block;font-weight:600;font-size:1rem}
+  .me span{
+    display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;
+    color:var(--mute);margin-top:.3rem;line-height:1.55;
+  }
+
   footer{
     text-align:center;padding:clamp(2.5rem,9vw,4rem) var(--gap);
     font-family:var(--mono);font-size:.68rem;color:var(--mute);line-height:1.9;
   }
+
+  .brand{display:inline-block;margin-top:.5rem;letter-spacing:.16em;text-transform:uppercase}
 
   @media (prefers-reduced-motion:reduce){
     .dot{animation:none;top:calc(50% - 2.5px)}
@@ -182,6 +205,7 @@
 <body>
 
 <header class="hero">
+  <img class="mark" src="cypher-mark.png" alt="Cypher" width="280" height="291">
   <p class="label">Demo Night Belgrade · 19 Aug 2026</p>
   <h1>The agent is the <em>cheap</em> part.</h1>
   <p>Everything in the demo runs on notes an agent can read. Three rules keep those notes worth reading — and every tool from the talk is listed here.</p>
@@ -397,6 +421,13 @@ vault/
     <div class="col">
       <p class="label">Find me</p>
       <h2>Say hello</h2>
+      <div class="me">
+        <img src="photo.jpg" alt="Mikhail Maximov" width="72" height="72" loading="lazy">
+        <div>
+          <b>Mikhail Maximov</b>
+          <span>Product builder · Cypher digital agency · Belgrade</span>
+        </div>
+      </div>
       <p class="intro">Telegram is fastest. If you're building something like this and got stuck on the network part, that's my favourite kind of message.</p>
       <ul class="contact">
         <li><a href="https://t.me/mmaximov97"><span class="where">Telegram</span><span class="handle">@mmaximov97</span></a></li>
@@ -411,7 +442,8 @@ vault/
 
 <footer>
   Mikhail Maximov — companion page to a ten-minute demo<br>
-  at Demo Night Belgrade, 19 August 2026.
+  at Demo Night Belgrade, 19 August 2026.<br>
+  <span class="brand">Cypher · digital agency</span>
 </footer>
 
 </body>
