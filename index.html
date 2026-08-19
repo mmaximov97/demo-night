@@ -7,7 +7,8 @@
 <meta name="description" content="My ruleset when working with AI: three rules for the context your agents read, the setup behind it, and every tool from the Demo Night Belgrade talk.">
 <meta property="og:title" content="Collect · Curate · Reach">
 <meta property="og:description" content="Three rules for the context your agents read — companion page to the Demo Night Belgrade talk.">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta property="og:image" content="https://mmaximov97.github.io/demo-night/cypher-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -240,7 +241,29 @@
   .slide-split img{max-height:66vh;width:auto;border:1px solid var(--edge)}
   .slide-split .side{flex:1;min-width:0}
   .slide .spec{margin-top:1.2rem}
+  .slide-vault .ob-mark{height:clamp(30px,3.4vw,46px);width:auto;max-height:none;border:0;display:block}
+  .slide-vault .ob-cap{
+    margin:.7rem 0 1rem;font-family:var(--mono);font-size:.7rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--mute);
+  }
+  .slide-vault pre{
+    font-size:clamp(.72rem,1.05vw,.95rem);line-height:1.95;
+    padding:1.1rem 1.25rem;
+  }
+  .slide-vault h2{font-size:clamp(1.9rem,4.4vw,3.4rem)}
   .slide .route{max-width:26rem;width:100%}
+  .agents{display:flex;flex-wrap:wrap;gap:clamp(1.4rem,4vw,3.2rem);margin-top:2.4rem}
+  .agent{display:flex;align-items:center;gap:.9rem}
+  .agent img{
+    width:clamp(54px,5.8vw,82px);height:clamp(54px,5.8vw,82px);
+    border-radius:50%;object-fit:cover;border:1px solid var(--edge);flex:none;
+  }
+  .agent b{font-family:var(--sans);font-weight:600;font-size:clamp(.98rem,1.4vw,1.2rem);display:block}
+  .agent span{
+    display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--mute);margin-top:.3rem;
+  }
+
   .slide-qr{align-items:center;text-align:center}
   .slide-qr img{width:min(42vh,300px);height:auto}
   .slide-qr .url{
@@ -584,10 +607,30 @@ vault/
     <p class="sub">The models can already hold more than I can. The bottleneck moved: does the material exist, is it still true, and can the model reach it.</p>
   </article>
 
-  <article class="slide">
-    <p class="label">01 — Collect</p>
-    <h2>Gather more context than feels reasonable</h2>
-    <p class="sub">Specs. Meeting transcripts. Voice notes. Decisions — including the ones I turned down.</p>
+  <article class="slide slide-split slide-vault">
+    <div class="side">
+      <p class="label">01 — Collect</p>
+      <h2>Gather more context than feels reasonable</h2>
+      <p class="sub">Specs. Meeting transcripts. Voice notes. Decisions — including the ones I turned down.</p>
+    </div>
+    <div class="side">
+      <img class="ob-mark" src="obsidian.svg" alt="Obsidian">
+      <p class="ob-cap">Plain markdown in a git repository</p>
+<pre>
+vault/
+├── CLAUDE.md    <b>rules for the agent</b>
+├── agency/      <b>clients and briefs</b>
+├── products/    <b>side projects</b>
+├── work/        <b>day job</b>
+├── learning/    <b>notes by subject</b>
+├── personal/    <b>planning, health</b>
+├── finance/     <b>monthly reports</b>
+├── tasks/
+│   ├── weekly/  <b>three outcomes max</b>
+│   └── monthly/ <b>goals and retro</b>
+└── templates/   <b>shapes for new notes</b>
+</pre>
+    </div>
   </article>
 
   <article class="slide slide-diagram">
@@ -725,6 +768,16 @@ vault/
     <p class="label">What it buys</p>
     <h2>The agent is <em>in the chat</em></h2>
     <p class="sub">A complaint is not a task. Deciding what's broken stays my job — what the agent gets is the decision.</p>
+    <div class="agents">
+      <div class="agent">
+        <img src="agent-cypher_regan.jpg" alt="Cypher Regan" loading="lazy">
+        <div><b>Cypher Regan</b><span>keeps the archive</span></div>
+      </div>
+      <div class="agent">
+        <img src="agent-morpheus_cypher.jpg" alt="Morpheus" loading="lazy">
+        <div><b>Morpheus</b><span>asks the awkward questions</span></div>
+      </div>
+    </div>
   </article>
 
   <article class="slide slide-qr">
