@@ -230,6 +230,13 @@
     margin:1.6rem 0 0;max-width:34ch;
     font-size:clamp(1rem,2.1vw,1.5rem);line-height:1.5;color:var(--mute);
   }
+  .credit-line{
+    margin:2rem 0 0;font-family:var(--mono);font-size:.72rem;
+    letter-spacing:.06em;color:var(--mute);line-height:1.7;max-width:46ch;
+    padding-top:1rem;border-top:1px solid var(--rule);
+  }
+  .credit-line b{color:var(--ink);font-weight:500}
+
   .slide-title{align-items:center;text-align:center}
   .slide-title .mark{height:clamp(56px,9vw,96px);margin-bottom:1.8rem}
   .slide-title h2{max-width:none}
@@ -417,6 +424,7 @@ vault/
         </div>
       </div>
       <p>Both peers dial out to the VPS, so neither needs an open port. Once the tunnel is up my phone is on the same network as my living room, and everything after that is ordinary ssh into a session that was already running.</p>
+      <p class="note"><b>Where this came from:</b> the shape of it isn't mine. I took it from <a href="https://x.com/levelsio">Pieter Levels</a> — one machine, no devops, no cluster, ship from wherever you happen to be standing. What I added on top is the context layer: the same single server, except the agent already knows everything I know.</p>
     </div>
   </section>
 
@@ -617,6 +625,7 @@ vault/
     <p class="label">The idea</p>
     <h2>My ruleset when working with <em>AI</em></h2>
     <p class="sub">The models can already hold more than I can. The bottleneck moved: does the material exist, is it still true, and can the model reach it.</p>
+    <p class="credit-line">Setup borrowed from <b>@levelsio</b> — one machine, no devops. The context layer is the part I added.</p>
   </article>
 
   <article class="slide slide-split slide-vault">
