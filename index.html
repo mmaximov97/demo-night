@@ -249,6 +249,31 @@
   }
   .slide-qr .who{margin:.7rem 0 0;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 
+  .slide-diagram{justify-content:center}
+  .diagram{width:100%;max-width:min(96vw,1100px);height:auto;margin:1.4rem auto 0;display:block}
+  .diagram .box{fill:#fff;stroke:var(--ink);stroke-width:1.5}
+  .diagram .zone{fill:none;stroke:var(--mute);stroke-width:1.5;stroke-dasharray:7 6}
+  .diagram .wire{stroke:var(--mute);stroke-width:1.5;fill:none;stroke-dasharray:6 5}
+  .diagram .flow{stroke:var(--ink);stroke-width:2;fill:none}
+  .diagram .ttl{font-family:var(--sans);font-weight:600;font-size:20px;fill:var(--ink)}
+  .diagram .sm{font-family:var(--mono);font-size:13px;fill:var(--mute);letter-spacing:.04em}
+  .diagram .tag{font-family:var(--mono);font-size:12px;fill:var(--mute);letter-spacing:.13em;text-transform:uppercase}
+  .diagram .pip{fill:var(--ink)}
+  .diagram .pip circle{r:6}
+  @media(max-width:44rem) and (orientation:landscape){
+    .diagram .ttl{font-size:26px}
+    .diagram .sm{font-size:18px}
+    .diagram .tag{font-size:17px}
+  }
+  /* портрет на телефоне: горизонтальная схема не читается — даём вертикальную */
+  .dgm-fallback{display:none}
+  .dgm-fallback .route{max-width:20rem;margin:1.2rem auto 0}
+  .dgm-fallback .skills{margin-top:1.2rem;border-top:1px solid var(--rule)}
+  @media(max-width:44rem) and (orientation:portrait){
+    .diagram{display:none}
+    .dgm-fallback{display:block;width:100%}
+  }
+
   .deck-bar{
     position:absolute;left:0;right:0;bottom:0;z-index:2;
     display:flex;justify-content:space-between;align-items:center;
@@ -565,6 +590,62 @@ vault/
     <p class="sub">Specs. Meeting transcripts. Voice notes. Decisions — including the ones I turned down.</p>
   </article>
 
+  <article class="slide slide-diagram">
+    <p class="label">01 — Collect · how it lands</p>
+    <svg class="diagram" viewBox="0 0 980 400" role="img" aria-label="Meetings and voice notes are transcribed locally; specs and decisions are written straight into the vault; a weekly pass cleans it; agents read it">
+      <rect class="box" x="10" y="34" width="196" height="58" rx="6"/>
+      <text class="sm" x="108" y="69" text-anchor="middle">Meetings</text>
+      <rect class="box" x="10" y="110" width="196" height="58" rx="6"/>
+      <text class="sm" x="108" y="145" text-anchor="middle">Voice notes</text>
+      <rect class="box" x="10" y="212" width="196" height="58" rx="6"/>
+      <text class="sm" x="108" y="247" text-anchor="middle">Specs</text>
+      <rect class="box" x="10" y="288" width="196" height="58" rx="6"/>
+      <text class="sm" x="108" y="323" text-anchor="middle">Decisions</text>
+
+      <rect class="box" x="286" y="72" width="196" height="58" rx="6"/>
+      <text class="sm" x="384" y="99" text-anchor="middle">Transcribed</text>
+      <text class="tag" x="384" y="119" text-anchor="middle">on my own GPU</text>
+
+      <path class="wire" d="M211 63 L281 92" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 139 L281 112" marker-end="url(#tip2)"/>
+      <path class="wire" d="M487 101 L556 160" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 241 L556 205" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 317 L556 225" marker-end="url(#tip2)"/>
+
+      <rect class="box" x="562" y="120" width="180" height="150" rx="6"/>
+      <text class="ttl" x="652" y="180" text-anchor="middle">The vault</text>
+      <text class="sm" x="652" y="206" text-anchor="middle">markdown in git</text>
+
+      <path class="flow" d="M604 118 C604 56 700 56 700 118" marker-end="url(#tip3)"/>
+      <text class="tag" x="652" y="44" text-anchor="middle">weekly pass — delete, fact-check</text>
+
+      <rect class="box" x="806" y="150" width="164" height="90" rx="6"/>
+      <text class="ttl" x="888" y="190" text-anchor="middle">Agents</text>
+      <text class="sm" x="888" y="214" text-anchor="middle">read it</text>
+      <path class="flow" d="M747 195 L801 195" marker-end="url(#tip3)"/>
+
+      <text class="tag" x="490" y="382" text-anchor="middle">nothing leaves the flat until I decide it should</text>
+
+      <defs>
+        <marker id="tip2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#71736F"/>
+        </marker>
+        <marker id="tip3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#15171A"/>
+        </marker>
+      </defs>
+    </svg>
+    <div class="dgm-fallback">
+      <ul class="skills">
+        <li><span class="mono">Meetings, voice notes</span> — transcribed on my own GPU</li>
+        <li><span class="mono">Specs, decisions</span> — written straight in</li>
+        <li><span class="mono">The vault</span> — markdown in git</li>
+        <li><span class="mono">Weekly pass</span> — delete what's dead, fact-check what's new</li>
+        <li><span class="mono">Agents</span> — read all of it</li>
+      </ul>
+    </div>
+  </article>
+
   <article class="slide">
     <p class="label">02 — Curate</p>
     <h2>Context <em>rots</em></h2>
@@ -577,14 +658,52 @@ vault/
     <p class="sub">Phone, tunnel, the tower in my flat. After that it's just ssh — and the session never died.</p>
   </article>
 
-  <article class="slide">
-    <p class="label">The setup</p>
-    <div class="route">
-      <div class="hop"><h3>Phone</h3><p>Termux · ssh</p></div>
-      <div class="span"><span class="dot"></span><span>WireGuard</span></div>
-      <div class="hop"><h3>VPS</h3><p>meeting point · computes nothing</p></div>
-      <div class="span"><span class="dot"></span><span>WireGuard</span></div>
-      <div class="hop"><h3>Home server</h3><p>behind NAT · tmux · agents</p></div>
+  <article class="slide slide-diagram">
+    <p class="label">03 — Reach · the setup</p>
+    <svg class="diagram" viewBox="0 0 980 400" role="img" aria-label="The phone dials out to a rented VPS, the home server dials out to the same VPS, and after that the phone reaches the server directly over ssh">
+      <rect class="zone" x="678" y="86" width="286" height="256" rx="6"/>
+      <text class="tag" x="821" y="72" text-anchor="middle">my flat · behind NAT</text>
+
+      <rect class="box" x="20" y="140" width="150" height="150" rx="6"/>
+      <text class="ttl" x="95" y="200" text-anchor="middle">Phone</text>
+      <text class="sm" x="95" y="226" text-anchor="middle">Termux · ssh</text>
+
+      <rect class="box" x="405" y="155" width="170" height="120" rx="6"/>
+      <text class="ttl" x="490" y="203" text-anchor="middle">VPS</text>
+      <text class="sm" x="490" y="229" text-anchor="middle">rented</text>
+      <text class="tag" x="490" y="300" text-anchor="middle">computes nothing</text>
+      <text class="tag" x="490" y="322" text-anchor="middle">just a meeting point</text>
+
+      <rect class="box" x="716" y="140" width="210" height="150" rx="6"/>
+      <text class="ttl" x="821" y="196" text-anchor="middle">Home server</text>
+      <text class="sm" x="821" y="222" text-anchor="middle">tmux · agents · repos</text>
+
+      <path class="wire" d="M175 195 L400 195" marker-end="url(#tip)"/>
+      <text class="tag" x="288" y="180" text-anchor="middle">dials out</text>
+      <path class="wire" d="M711 195 L580 195" marker-end="url(#tip)"/>
+      <text class="tag" x="628" y="180" text-anchor="middle">dials out</text>
+      <text class="tag" x="288" y="152" text-anchor="middle">WireGuard</text>
+      <text class="tag" x="628" y="152" text-anchor="middle">WireGuard</text>
+
+      <path class="flow" id="ssh" d="M95 300 L95 360 L821 360 L821 300"/>
+      <text class="sm" x="458" y="386" text-anchor="middle">neither side needs an open port — then it is just ssh</text>
+      <g class="pip"><circle r="6"><animateMotion dur="3.4s" repeatCount="indefinite" path="M95 300 L95 360 L821 360 L821 300"/></circle></g>
+
+      <defs>
+        <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#71736F"/>
+        </marker>
+      </defs>
+    </svg>
+    <div class="dgm-fallback">
+      <div class="route">
+        <div class="hop"><h3>Phone</h3><p>Termux · ssh</p></div>
+        <div class="span"><span class="dot"></span><span>WireGuard · dials out</span></div>
+        <div class="hop"><h3>VPS</h3><p>rented · computes nothing · just a meeting point</p></div>
+        <div class="span"><span class="dot"></span><span>WireGuard · dials out</span></div>
+        <div class="hop"><h3>Home server</h3><p>behind NAT · tmux · agents · repos</p></div>
+      </div>
+      <p class="sub">Neither side needs an open port. After that it is just ssh.</p>
     </div>
   </article>
 
