@@ -238,7 +238,12 @@
   .credit-line b{color:var(--ink);font-weight:500}
 
   .slide-rules .rules-row{display:flex;gap:clamp(1.2rem,3vw,2.6rem);margin-top:2.2rem}
-  .slide-rules .rule-col{flex:1;min-width:0;border-top:1px solid var(--rule);padding-top:.9rem}
+  .slide-rules .rule-col{flex:1;min-width:0;border-top:1px solid var(--rule);padding-top:1.1rem}
+  .ico{
+    display:block;width:clamp(30px,3vw,42px);height:auto;margin-bottom:.95rem;
+    fill:none;stroke:var(--ink);stroke-width:1.8;
+    stroke-linecap:round;stroke-linejoin:round;
+  }
   .slide-rules .rule-line{
     margin:.65rem 0 0;font-size:clamp(.88rem,1.3vw,1.12rem);
     line-height:1.5;color:var(--mute);
@@ -763,14 +768,17 @@ vault/
     <h2>My ruleset when working with <em>AI</em></h2>
     <div class="rules-row">
       <div class="rule-col">
+        <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3v15"/><path d="M10.5 12.5L16 18l5.5-5.5"/><path d="M4 20v8h24v-8"/></svg>
         <p class="label">01 — Collect</p>
         <p class="rule-line">Gather more context than feels reasonable. Meetings, voice notes, specs, decisions, ideas, research.</p>
       </div>
       <div class="rule-col">
+        <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 5h24l-9 10.5V27l-6-3.5V15.5z"/></svg>
         <p class="label">02 — Curate</p>
         <p class="rule-line">Context rots. Delete what's dead, fact-check what's new. Conventions live in a file, not in my head.</p>
       </div>
       <div class="rule-col">
+        <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23Q16 3 27 23"/><circle cx="5" cy="24" r="3.2"/><circle cx="27" cy="24" r="3.2"/></svg>
         <p class="label">03 — Reach</p>
         <p class="rule-line">Context you can't reach is context you don't have. It has to be there when I'm not at a desk.</p>
       </div>
