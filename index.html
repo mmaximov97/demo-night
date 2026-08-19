@@ -196,13 +196,85 @@
 
   .brand{display:inline-block;margin-top:.5rem;letter-spacing:.16em;text-transform:uppercase}
 
+  /* ---------- mode toggle + deck ---------- */
+  #mode{
+    position:fixed;top:.9rem;right:.9rem;z-index:60;
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink);background:var(--panel);border:1px solid var(--edge);
+    padding:.5rem .8rem;cursor:pointer;border-radius:999px;
+  }
+  #mode:hover{background:#fff}
+  #mode:focus-visible{outline:1.5px solid var(--ink);outline-offset:2px}
+
+  body.deck-on{overflow:hidden}
+  body.deck-on > header,body.deck-on > main,body.deck-on > footer{display:none}
+
+  #deck{position:fixed;inset:0;z-index:50;background:var(--panel)}
+  #deck[hidden]{display:none}
+  .slide{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(1.5rem,6vw,5rem);
+    opacity:0;visibility:hidden;transition:opacity .22s ease;
+  }
+  .slide.on{opacity:1;visibility:visible}
+  .slide .label{margin-bottom:1.4rem}
+  .slide h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.2rem,7.5vw,5.2rem);line-height:1.03;letter-spacing:-.02em;
+    margin:0;max-width:18ch;
+  }
+  .slide h2 em{font-style:italic}
+  .slide .sub{
+    margin:1.6rem 0 0;max-width:34ch;
+    font-size:clamp(1rem,2.1vw,1.5rem);line-height:1.5;color:var(--mute);
+  }
+  .slide-title{align-items:center;text-align:center}
+  .slide-title .mark{height:clamp(56px,9vw,96px);margin-bottom:1.8rem}
+  .slide-title h2{max-width:none}
+  .slide-me{
+    margin-top:1.8rem;font-family:var(--mono);font-size:.72rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+  }
+  .slide-split{flex-direction:row;align-items:center;gap:clamp(1.5rem,5vw,4rem)}
+  .slide-split img{max-height:66vh;width:auto;border:1px solid var(--edge)}
+  .slide-split .side{flex:1;min-width:0}
+  .slide .spec{margin-top:1.2rem}
+  .slide .route{max-width:26rem;width:100%}
+  .slide-qr{align-items:center;text-align:center}
+  .slide-qr img{width:min(42vh,300px);height:auto}
+  .slide-qr .url{
+    margin:1.4rem 0 0;font-family:var(--mono);font-size:clamp(.8rem,1.8vw,1.1rem);
+    letter-spacing:.04em;
+  }
+  .slide-qr .who{margin:.7rem 0 0;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+
+  .deck-bar{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1rem clamp(1rem,3vw,2rem);
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--mute);pointer-events:none;
+  }
+  .deck-bar b{color:var(--ink);font-weight:500}
+  .deck-hint{opacity:.75}
+
+  @media(max-width:44rem){
+    .slide-split{flex-direction:column;justify-content:center}
+    .slide-split img{max-height:38vh}
+    .deck-hint{display:none}
+  }
+
   @media (prefers-reduced-motion:reduce){
     .dot{animation:none;top:calc(50% - 2.5px)}
+    .slide{transition:none}
     *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   }
 </style>
 </head>
 <body>
+
+<button id="mode" type="button" aria-pressed="false">Slides</button>
 
 <header class="hero">
   <img class="mark" src="cypher-mark.png" alt="Cypher" width="280" height="291">
@@ -471,6 +543,137 @@ vault/
   at Demo Night Belgrade, 19 August 2026.<br>
   <span class="brand">Cypher · digital agency</span>
 </footer>
+
+
+<div id="deck" hidden aria-label="Slides">
+
+  <article class="slide slide-title">
+    <img class="mark" src="cypher-mark.png" alt="Cypher">
+    <h2>Demo Night <em>Belgrade</em></h2>
+    <p class="slide-me">Mikhail Maximov · 19 August 2026</p>
+  </article>
+
+  <article class="slide">
+    <p class="label">The idea</p>
+    <h2>My ruleset when working with <em>AI</em></h2>
+    <p class="sub">The models can already hold more than I can. The bottleneck moved: does the material exist, is it still true, and can the model reach it.</p>
+  </article>
+
+  <article class="slide">
+    <p class="label">01 — Collect</p>
+    <h2>Gather more context than feels reasonable</h2>
+    <p class="sub">Specs. Meeting transcripts. Voice notes. Decisions — including the ones I turned down.</p>
+  </article>
+
+  <article class="slide">
+    <p class="label">02 — Curate</p>
+    <h2>Context <em>rots</em></h2>
+    <p class="sub">Delete what's dead, fact-check what's new. The conventions live in a file, not in my head.</p>
+  </article>
+
+  <article class="slide">
+    <p class="label">03 — Reach</p>
+    <h2>Context you can't reach is context you don't have</h2>
+    <p class="sub">Phone, tunnel, the tower in my flat. After that it's just ssh — and the session never died.</p>
+  </article>
+
+  <article class="slide">
+    <p class="label">The setup</p>
+    <div class="route">
+      <div class="hop"><h3>Phone</h3><p>Termux · ssh</p></div>
+      <div class="span"><span class="dot"></span><span>WireGuard</span></div>
+      <div class="hop"><h3>VPS</h3><p>meeting point · computes nothing</p></div>
+      <div class="span"><span class="dot"></span><span>WireGuard</span></div>
+      <div class="hop"><h3>Home server</h3><p>behind NAT · tmux · agents</p></div>
+    </div>
+  </article>
+
+  <article class="slide slide-split">
+    <img src="server.jpg" alt="The server: a tower on the floor with a phone wired to it">
+    <div class="side">
+      <p class="label">The hardware</p>
+      <h2>A tower on the <em>floor</em></h2>
+      <ul class="skills spec">
+        <li><span class="mono">CPU</span> — Ryzen 5 3600</li>
+        <li><span class="mono">GPU</span> — GTX 1660, 6 GB</li>
+        <li><span class="mono">Memory</span> — 32 GB</li>
+        <li><span class="mono">Phone</span> — Pixel 3a on USB, driven by adb</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="slide">
+    <p class="label">What it buys</p>
+    <h2>The agent is <em>in the chat</em></h2>
+    <p class="sub">A complaint is not a task. Deciding what's broken stays my job — what the agent gets is the decision.</p>
+  </article>
+
+  <article class="slide slide-qr">
+    <img src="qr.png" alt="QR code to this page">
+    <p class="url">mmaximov97.github.io/demo-night</p>
+    <p class="who">Mikhail Maximov · @mmaximov97</p>
+  </article>
+
+  <div class="deck-bar">
+    <span><b class="cur">1</b> / <span class="total">9</span></span>
+    <span class="deck-hint">← → to move · Esc to exit · F for fullscreen</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  var body=document.body,deck=document.getElementById('deck'),btn=document.getElementById('mode');
+  var slides=[].slice.call(deck.querySelectorAll('.slide'));
+  var cur=deck.querySelector('.cur'),total=deck.querySelector('.total');
+  var i=0,on=false;
+  total.textContent=slides.length;
+
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    cur.textContent=i+1;
+  }
+  function enter(){
+    on=true;deck.hidden=false;body.classList.add('deck-on');
+    btn.textContent='Page';btn.setAttribute('aria-pressed','true');
+    show(i);if(location.hash!=='#slides')history.replaceState(null,'','#slides');
+  }
+  function leave(){
+    on=false;deck.hidden=true;body.classList.remove('deck-on');
+    btn.textContent='Slides';btn.setAttribute('aria-pressed','false');
+    if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen();
+    history.replaceState(null,'',location.pathname);
+  }
+  btn.addEventListener('click',function(){on?leave():enter()});
+
+  document.addEventListener('keydown',function(e){
+    if(!on)return;
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}
+    else if(e.key==='Escape'){leave()}
+    else if(e.key==='f'||e.key==='F'){
+      if(!document.fullscreenElement){if(deck.requestFullscreen)deck.requestFullscreen()}
+      else if(document.exitFullscreen){document.exitFullscreen()}
+    }
+  });
+
+  deck.addEventListener('click',function(e){
+    if(e.target.closest('#mode'))return;
+    show(e.clientX < window.innerWidth/3 ? i-1 : i+1);
+  });
+
+  var x0=null;
+  deck.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(x0===null)return;
+    var dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>40)show(dx<0?i+1:i-1);
+    x0=null;
+  },{passive:true});
+
+  if(location.hash==='#slides')enter();
+})();
+</script>
 
 </body>
 </html>
