@@ -4,231 +4,165 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Collect · Curate · Reach — Mikhail Maximov</title>
-<meta name="description" content="The context system behind the agents I run: three rules, the setup, and every link from the Demo Night Belgrade talk.">
+<meta name="description" content="Companion page to the Demo Night Belgrade talk: three rules for the context your agents read, the setup behind it, and every tool involved.">
 <meta property="og:title" content="Collect · Curate · Reach">
-<meta property="og:description" content="Companion page to the Demo Night Belgrade talk — three rules for the context your agents read.">
+<meta property="og:description" content="Three rules for the context your agents read — companion page to the Demo Night Belgrade talk.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0E1420;
-    --ink-2:#161E2E;
-    --wire:#2A3852;
-    --bone:#E9E2D2;
-    --dim:#8E9AAE;
-    --signal:#F0A343;
-    --live:#6FC9A8;
+    --ground:#ECECEA;
+    --panel:#F9F9F8;
+    --edge:#DCDCD8;
+    --rule:#EAEAE6;
+    --ink:#15171A;
+    --mute:#71736F;
 
-    --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-    --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+    --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 
-    --measure:34rem;
-    --pad:clamp(1.25rem,5vw,2.5rem);
+    --gap:clamp(1.25rem,6vw,2.75rem);
   }
 
   *,*::before,*::after{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
     margin:0;
-    background:var(--ink);
-    color:var(--bone);
-    font-family:var(--body);
-    font-size:clamp(1.02rem,0.98rem + 0.2vw,1.12rem);
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:1.02rem;
     line-height:1.62;
     -webkit-font-smoothing:antialiased;
   }
-  ::selection{background:var(--signal);color:var(--ink)}
 
-  a{color:var(--bone);text-decoration-color:var(--wire);text-underline-offset:.22em;text-decoration-thickness:1px}
-  a:hover{text-decoration-color:var(--signal)}
-  a:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+  a{color:inherit;text-decoration:underline;text-decoration-color:#B9B9B3;text-underline-offset:.2em;text-decoration-thickness:1px}
+  a:hover{text-decoration-color:var(--ink)}
+  a:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px;border-radius:1px}
 
-  .wrap{max-width:60rem;margin:0 auto;padding:0 var(--pad)}
-  .prose{max-width:var(--measure)}
-
-  /* ---------- shared type ---------- */
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:.72rem;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--dim);
-    margin:0 0 1.4rem;
-    display:flex;align-items:center;gap:.85rem;
+  .label{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--mute);margin:0;
   }
-  .eyebrow::after{content:"";flex:1;height:1px;background:var(--wire)}
 
-  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.06;letter-spacing:-.02em;margin:0}
-  h2{font-size:clamp(1.6rem,1.2rem + 1.9vw,2.4rem);font-weight:700}
-  h3{font-size:1.06rem;font-weight:700;letter-spacing:-.01em;line-height:1.3}
-
-  /* ---------- hero ---------- */
-  .hero{padding:clamp(3.5rem,10vw,7rem) 0 clamp(2.5rem,6vw,4rem)}
+  /* ---------- hero, on the open ground ---------- */
+  .hero{
+    text-align:center;
+    padding:clamp(3.5rem,14vw,7rem) var(--gap) clamp(3rem,10vw,5rem);
+  }
   .hero h1{
-    font-size:clamp(2.35rem,1.3rem + 5.4vw,4.6rem);
-    max-width:16ch;
-    margin-bottom:1.6rem;
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.9rem,13vw,5.4rem);
+    line-height:1.02;letter-spacing:-.015em;
+    margin:1.6rem auto 0;max-width:13ch;
   }
-  .hero h1 em{font-style:normal;color:var(--signal)}
-  .hero p{max-width:var(--measure);color:var(--bone);margin:0 0 2.4rem}
-
-  .stamp{
-    font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;color:var(--dim);
-    display:flex;flex-wrap:wrap;gap:.4rem .7rem;align-items:center;
-    padding-top:1.4rem;border-top:1px solid var(--wire);
-    max-width:var(--measure);
-  }
-  .stamp b{color:var(--bone);font-weight:500}
-  .stamp span[aria-hidden]{color:var(--signal)}
-
-  /* ---------- sections ---------- */
-  section{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--wire)}
-  section > .wrap > h2{margin-bottom:1.4rem}
-  .lede{max-width:var(--measure);color:var(--dim);margin:0 0 2.8rem}
-
-  /* ---------- the three rules ---------- */
-  .rule{
-    display:grid;
-    grid-template-columns:1fr;
-    padding-bottom:2.6rem;
-  }
-  .rule:last-of-type{padding-bottom:0}
-  .rule__num{
-    font-family:var(--mono);font-size:.78rem;color:var(--signal);
-    margin-bottom:.9rem;
-  }
-  @media(min-width:44rem){
-    .rule{grid-template-columns:auto 1fr;column-gap:2.2rem}
-    .rule__num{
-      grid-column:1;grid-row:1 / -1;
-      margin-bottom:0;padding-top:.4rem;position:relative;
-    }
-    .rule > :not(.rule__num){grid-column:2}
-    .rule:not(:last-of-type) .rule__num::after{
-      content:"";position:absolute;left:50%;top:2.2rem;bottom:-2.6rem;
-      width:1px;background:var(--wire);
-    }
-  }
-  .rule h3{margin-bottom:.7rem}
-  .rule h3 small{
-    display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem;
-  }
-  .rule p{margin:0 0 1rem;max-width:var(--measure)}
-  .rule p:last-child{margin-bottom:0}
-  .facts{
-    list-style:none;margin:1.1rem 0 0;padding:0;
-    display:flex;flex-wrap:wrap;gap:.4rem;
-    font-family:var(--mono);font-size:.74rem;
-  }
-  .facts li{
-    border:1px solid var(--wire);border-radius:999px;
-    padding:.28rem .7rem;color:var(--dim);
-  }
-  .facts b{color:var(--live);font-weight:500}
-
-  .chain{
-    font-family:var(--mono);font-size:.78rem;color:var(--dim);
-    margin:2.6rem 0 0;padding:1rem 1.1rem;
-    border:1px solid var(--wire);border-left:2px solid var(--signal);
-    max-width:var(--measure);line-height:1.7;
+  .hero h1 em{font-style:italic}
+  .hero p{
+    margin:1.5rem auto 0;max-width:32rem;
+    color:var(--mute);font-size:1rem;
   }
 
-  /* ---------- signature: the route ---------- */
-  .route{margin:0;padding:0;max-width:26rem}
-  .node{
-    border:1px solid var(--wire);
-    background:var(--ink-2);
-    padding:1rem 1.1rem;
+  /* ---------- the paper ---------- */
+  main{
+    background:var(--panel);
+    border-top:1px solid var(--edge);
+    border-bottom:1px solid var(--edge);
   }
-  .node h3{font-size:.98rem;margin-bottom:.35rem}
-  .node p{margin:0;font-family:var(--mono);font-size:.74rem;line-height:1.65;color:var(--dim)}
-  .node--edge{border-color:var(--signal)}
-  .node--edge h3{color:var(--signal)}
-  .node__tag{
-    display:inline-block;font-family:var(--mono);font-size:.66rem;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
-    background:var(--signal);padding:.1rem .45rem;margin-bottom:.55rem;
+  .col{max-width:38rem;margin:0 auto;padding:0 var(--gap)}
+
+  section{padding:clamp(2.75rem,9vw,4.5rem) 0}
+  section + section{border-top:1px solid var(--rule)}
+
+  h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.9rem,7vw,2.6rem);
+    line-height:1.1;letter-spacing:-.01em;
+    margin:.9rem 0 0;
   }
-  .link{
-    position:relative;height:4.6rem;margin-left:1.6rem;
-    border-left:1px solid var(--wire);
-    display:flex;align-items:center;
+  .intro{color:var(--mute);margin:1rem 0 0}
+  p{margin:1.1rem 0 0}
+
+  /* ---------- rules ---------- */
+  .rule{padding-top:2.6rem}
+  .rule:first-of-type{padding-top:2rem}
+  .rule h3{
+    font-family:var(--serif);font-weight:400;
+    font-size:1.65rem;line-height:1.18;letter-spacing:-.01em;
+    margin:.55rem 0 0;
   }
-  .link__label{
-    font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;
-    text-transform:uppercase;color:var(--dim);padding-left:.9rem;
+  .rule .label{display:flex;align-items:baseline;gap:.7rem}
+  .rule .label::after{content:"";flex:1;height:1px;background:var(--rule);transform:translateY(-.2em)}
+
+  /* ---------- vault tree ---------- */
+  figure{margin:1.8rem 0 0}
+  pre{
+    font-family:var(--mono);font-size:.72rem;line-height:1.85;
+    margin:0;padding:1.1rem 1.15rem;
+    background:#fff;border:1px solid var(--edge);
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    color:var(--ink);
   }
-  .packet{
-    position:absolute;left:-3px;top:0;width:5px;height:16px;
-    background:var(--signal);border-radius:3px;
-    animation:travel 2.6s cubic-bezier(.55,.1,.5,.9) infinite;
+  pre b{font-weight:400;color:var(--mute)}
+  figcaption{font-family:var(--mono);font-size:.68rem;color:var(--mute);margin-top:.7rem;line-height:1.6}
+
+  /* ---------- route ---------- */
+  .route{margin:2rem 0 0;max-width:23rem}
+  .hop{border:1px solid var(--edge);background:#fff;padding:.85rem 1rem}
+  .hop h3{font-family:var(--sans);font-size:.95rem;font-weight:600;margin:0}
+  .hop p{font-family:var(--mono);font-size:.68rem;color:var(--mute);margin:.3rem 0 0;line-height:1.6}
+  .span{
+    position:relative;height:3.4rem;margin-left:1.5rem;
+    border-left:1px solid var(--edge);display:flex;align-items:center;
   }
-  .link:nth-of-type(4) .packet{animation-delay:1.3s}
-  @keyframes travel{
-    0%{transform:translateY(-16px);opacity:0}
-    12%{opacity:1}
-    88%{opacity:1}
-    100%{transform:translateY(4.6rem);opacity:0}
+  .span span{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-left:.85rem}
+  .dot{
+    position:absolute;left:-2.5px;top:0;width:5px;height:5px;border-radius:50%;
+    background:var(--ink);animation:fall 2.8s linear infinite;
   }
-  .route-note{
-    font-family:var(--mono);font-size:.76rem;color:var(--dim);
-    margin:1.8rem 0 0;max-width:30rem;line-height:1.7;
+  .route .span:nth-of-type(4) .dot{animation-delay:1.4s}
+  @keyframes fall{
+    0%{transform:translateY(-5px);opacity:0}
+    10%{opacity:1}
+    90%{opacity:1}
+    100%{transform:translateY(3.4rem);opacity:0}
   }
 
-  /* ---------- tables / lists ---------- */
-  .kv{width:100%;border-collapse:collapse;font-size:.94rem;max-width:46rem}
-  .kv th,.kv td{text-align:left;padding:.72rem .8rem .72rem 0;border-bottom:1px solid var(--wire);vertical-align:top}
-  .kv th{
-    font-family:var(--mono);font-weight:500;font-size:.78rem;color:var(--bone);
-    white-space:nowrap;width:11rem;
-  }
-  .kv td{color:var(--dim)}
+  /* ---------- reference lists ---------- */
+  .list{margin:1.8rem 0 0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+  .list li{padding:.95rem 0;border-bottom:1px solid var(--rule)}
+  .list .name{font-weight:600;font-size:.98rem}
+  .list .name .mono{font-family:var(--mono);font-size:.86rem;font-weight:500}
+  .list .what{color:var(--mute);font-size:.94rem;margin-top:.15rem;line-height:1.55}
+  .list .by{font-family:var(--mono);font-size:.68rem;color:var(--mute);margin-top:.3rem}
 
-  @media(max-width:33.99rem){
-    .kv,.kv tbody,.kv tr,.kv th,.kv td{display:block;width:auto}
-    .kv tr{padding:.85rem 0;border-bottom:1px solid var(--wire)}
-    .kv tr:last-child{border-bottom:0}
-    .kv th,.kv td{border:0;padding:0;white-space:normal}
-    .kv th{margin-bottom:.3rem;color:var(--signal)}
+  .note{
+    margin:1.8rem 0 0;padding:1rem 1.15rem;
+    border:1px solid var(--edge);background:#fff;
+    font-size:.94rem;color:var(--mute);
   }
-
-  .cards{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--wire);border:1px solid var(--wire)}
-  @media(min-width:44rem){.cards{grid-template-columns:1fr 1fr}}
-  .cards li{background:var(--ink);padding:1.15rem 1.25rem}
-  .cards a{font-family:var(--display);font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:-.01em}
-  .cards a::after{content:" ↗";color:var(--dim);font-weight:400;font-size:.85em}
-  .cards a:hover{color:var(--signal)}
-  .cards p{margin:.5rem 0 0;font-size:.9rem;color:var(--dim);line-height:1.55}
-  .cards .meta{font-family:var(--mono);font-size:.7rem;color:var(--dim);margin-top:.7rem;letter-spacing:.08em;text-transform:uppercase}
-  .cards .meta b{color:var(--live);font-weight:500}
-
-  .credit{
-    margin:2.2rem 0 0;padding:1.1rem 1.2rem;border:1px solid var(--wire);
-    max-width:var(--measure);font-size:.94rem;color:var(--dim);
-  }
-  .credit b{color:var(--bone);font-weight:600}
+  .note b{color:var(--ink);font-weight:600}
+  code{font-family:var(--mono);font-size:.86em}
 
   /* ---------- contact ---------- */
-  .contact{display:grid;gap:1px;background:var(--wire);border:1px solid var(--wire);max-width:40rem}
-  @media(min-width:34rem){.contact{grid-template-columns:1fr 1fr}}
+  .contact{margin:1.8rem 0 0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+  .contact li{border-bottom:1px solid var(--rule)}
   .contact a{
-    background:var(--ink);padding:1.1rem 1.2rem;text-decoration:none;display:block;
+    display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    padding:.95rem 0;text-decoration:none;
   }
-  .contact a:hover{background:var(--ink-2)}
-  .contact span{
-    display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--dim);margin-bottom:.35rem;
-  }
-  .contact b{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-.01em}
-  .contact a:hover b{color:var(--signal)}
+  .contact a:hover .handle{text-decoration:underline;text-underline-offset:.2em}
+  .contact .where{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  .contact .handle{font-weight:600;text-align:right}
 
-  footer{padding:3rem 0 4rem;border-top:1px solid var(--wire);color:var(--dim);font-family:var(--mono);font-size:.74rem;line-height:1.8}
+  footer{
+    text-align:center;padding:clamp(2.5rem,9vw,4rem) var(--gap);
+    font-family:var(--mono);font-size:.68rem;color:var(--mute);line-height:1.9;
+  }
 
   @media (prefers-reduced-motion:reduce){
-    .packet{animation:none;top:calc(50% - 8px);opacity:1}
+    .dot{animation:none;top:calc(50% - 2.5px)}
     *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   }
 </style>
@@ -236,181 +170,232 @@
 <body>
 
 <header class="hero">
-  <div class="wrap">
-    <p class="eyebrow">Demo Night Belgrade · 19 Aug 2026</p>
-    <h1>Seven hundred thousand words I <em>don't</em> remember.</h1>
-    <p class="prose">Everything in the demo sits on one thing: a pile of notes my agents can read. Not a smarter model, not a better prompt — notes. Here are the three rules that keep those notes worth reading, and every link from the talk.</p>
-    <p class="stamp">
-      <b>This page started as a voice note.</b>
-      <span aria-hidden="true">→</span> 4 min of talking
-      <span aria-hidden="true">→</span> transcribed on a server in my flat
-      <span aria-hidden="true">→</span> a note
-      <span aria-hidden="true">→</span> this
-    </p>
-  </div>
+  <p class="label">Demo Night Belgrade · 19 Aug 2026</p>
+  <h1>The agent is the <em>cheap</em> part.</h1>
+  <p>Everything in the demo runs on notes an agent can read. Three rules keep those notes worth reading — and every tool from the talk is listed here.</p>
 </header>
 
-<section id="rules">
-  <div class="wrap">
-    <h2>Three rules</h2>
-    <p class="lede">They're numbered because they're a chain, not a menu. Each one is wasted without the one before it.</p>
+<main>
 
-    <article class="rule">
-      <div class="rule__num">01</div>
-      <h3><small>Collect</small>Gather more context than feels reasonable</h3>
-      <p>Four things go into the vault. <b>Specs</b> — what I'm building and why, written before the code. <b>Meetings</b> — every call recorded and transcribed. <b>Voice notes</b> — I talk while walking, it lands as text. <b>Decisions</b> — not only what I picked, but what I turned down and why.</p>
-      <p>That last one is the category a model can never rebuild by reading the repository. Code shows the decision that survived. Notes show the four that didn't, which is usually the question being asked.</p>
-      <ul class="facts">
-        <li><b>875</b> notes</li>
-        <li><b>726,000</b> words</li>
-        <li><b>13</b> meeting transcripts</li>
-        <li>since <b>2 Jul 2025</b></li>
-      </ul>
-    </article>
+  <section>
+    <div class="col">
+      <p class="label">The idea</p>
+      <h2>Three rules</h2>
+      <p class="intro">They're numbered because they're a chain, not a menu. Each one is wasted without the one before it.</p>
 
-    <article class="rule">
-      <div class="rule__num">02</div>
-      <h3><small>Curate</small>Context rots, so schedule the cleaning</h3>
-      <p>Models generate quickly. Let everything they write land in your notes and within a month you own a well-formatted archive of confident nonsense. Once a week I delete what's dead and fact-check what's new — models are good at catching a claim with nothing behind it.</p>
-      <p>The part that actually holds isn't discipline, it's a file. A hundred lines of conventions in the vault root tell the agent where notes go, how tasks are formatted, and what never to write. Curation is a config, not a mood.</p>
-      <ul class="facts">
-        <li>weekly pass</li>
-        <li><b>101</b> lines of conventions</li>
-        <li>fact-check by model, decision by me</li>
-      </ul>
-    </article>
+      <article class="rule">
+        <p class="label">01 — Collect</p>
+        <h3>Gather more context than feels reasonable</h3>
+        <p>Four things go into the vault. <strong>Specs</strong> — what I'm building and why, written before the code. <strong>Meetings</strong> — every call recorded and transcribed. <strong>Voice notes</strong> — I talk while walking, it lands as text. <strong>Decisions</strong> — not only what I picked, but what I turned down and why.</p>
+        <p>That last one is the category a model can never rebuild by reading the repository. Code shows the decision that survived; notes show the ones that didn't, which is usually the question being asked.</p>
+        <p>It's plain markdown in a git repository. No database, no service, nothing to migrate off — which is the only reason it has survived long enough to be useful.</p>
 
-    <article class="rule">
-      <div class="rule__num">03</div>
-      <h3><small>Reach</small>Context you can't reach is context you don't have</h3>
-      <p>A server sits in my apartment with no public address, behind NAT like everyone's. A small rented VPS is the meeting point: the server holds a tunnel to it, my phone holds a tunnel to it, and my phone lands inside my home network. The VPS computes nothing.</p>
-      <p>After that it's just ssh. The session on the server doesn't die when I shut the laptop — I attach to the same screen from the street, and the agent has been working the whole way.</p>
-      <ul class="facts">
-        <li>session alive <b>11 days</b></li>
-        <li>server up <b>3 weeks</b></li>
-        <li>WireGuard, not a SaaS tunnel</li>
-      </ul>
-    </article>
+        <figure>
+<pre>
+vault/
+├── CLAUDE.md    <b>rules for the agent</b>
+├── agency/      <b>clients and briefs</b>
+├── products/    <b>side projects</b>
+├── work/        <b>day job</b>
+├── learning/    <b>notes by subject</b>
+├── personal/    <b>planning, health</b>
+├── finance/     <b>monthly reports</b>
+├── tasks/
+│   ├── weekly/  <b>three outcomes max</b>
+│   └── monthly/ <b>goals and retro</b>
+└── templates/   <b>shapes for new notes</b>
+</pre>
+          <figcaption>Boring on purpose. Every client and every product gets one folder holding its spec, its decisions and its call transcripts — the agent finds things by reading, not by clever structure.</figcaption>
+        </figure>
+      </article>
 
-    <p class="chain">collect → nothing to curate<br>curate → nothing worth reaching for<br>reach → back to collect, from anywhere</p>
-  </div>
-</section>
+      <article class="rule">
+        <p class="label">02 — Curate</p>
+        <h3>Context rots, so schedule the cleaning</h3>
+        <p>Models generate quickly. Let everything they write land in your notes and within a month you own a well-formatted archive of confident nonsense. Once a week I delete what's dead and fact-check what's new — models are good at catching a claim with nothing behind it.</p>
+        <p>The part that actually holds isn't discipline, it's a file. The conventions at the vault root tell the agent where notes go, how tasks are written, and what never to add. Curation is a config, not a mood.</p>
+      </article>
 
-<section id="route">
-  <div class="wrap">
-    <p class="eyebrow">The setup</p>
-    <h2>How the phone gets home</h2>
-    <p class="lede">Three hops. The middle one is rented and does no work at all — that's the whole trick.</p>
-
-    <figure class="route">
-      <div class="node node--edge">
-        <span class="node__tag">you are here</span>
-        <h3>Phone</h3>
-        <p>Termux · ssh · a keyboard the size of a matchbox</p>
-      </div>
-      <div class="link"><span class="packet"></span><span class="link__label">WireGuard</span></div>
-      <div class="node">
-        <h3>VPS</h3>
-        <p>public address · meeting point · computes nothing</p>
-      </div>
-      <div class="link"><span class="packet"></span><span class="link__label">WireGuard</span></div>
-      <div class="node node--edge">
-        <h3>Home server</h3>
-        <p>behind NAT · tmux · agents · repositories · transcription</p>
-      </div>
-      <figcaption class="route-note">Both peers dial out to the VPS, so neither needs an open port. Once the tunnel is up my phone is on the same network as my living room, and everything after that is ordinary ssh into a tmux session that was already running.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section id="loop">
-  <div class="wrap">
-    <p class="eyebrow">What it buys</p>
-    <h2>The agent is in the chat</h2>
-    <div class="prose">
-      <p>Through an MCP server, my agent reads and writes Telegram. It sits in the working chats with the people I build for. Anya designs my nutrition app and reports what's broken in her own words — no ticket, no repro steps, no screenshot.</p>
-      <p>I don't forward her message to the model. A complaint isn't a task: somebody has to decide what's actually broken, what to touch and what to leave alone. That stays my job. What the agent receives is the decision, and it reads the chat, the repository and the notes on its own — I never describe the project.</p>
-      <p>Then it's a push to staging, three and a half minutes of CI, and a rule I don't bend: production waits for Anya to say ок. She's a better QA than my test suite.</p>
+      <article class="rule">
+        <p class="label">03 — Reach</p>
+        <h3>Context you can't reach is context you don't have</h3>
+        <p>A server sits in my apartment with no public address, behind NAT like everyone's. A small rented VPS is the meeting point: the server holds a tunnel to it, my phone holds a tunnel to it, and my phone lands inside my home network. The VPS computes nothing.</p>
+        <p>After that it's just ssh. The session on the server doesn't die when I shut the laptop — I attach to the same screen from the street, and the agent has been working the whole way.</p>
+      </article>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="stack">
-  <div class="wrap">
-    <p class="eyebrow">Tools</p>
-    <h2>What's actually running</h2>
-    <table class="kv">
-      <tbody>
-        <tr><th>Agent</th><td>Claude Code, several sessions in parallel</td></tr>
-        <tr><th>Notes</th><td>Obsidian over a git repository — plain markdown, no database</td></tr>
-        <tr><th>Session</th><td>tmux on the home server, so closing the laptop changes nothing</td></tr>
-        <tr><th>Network</th><td>WireGuard, with a rented VPS as the meeting point</td></tr>
-        <tr><th>Phone</th><td>Termux — ssh and a tmux attach, nothing custom</td></tr>
-        <tr><th>Transcription</th><td>faster-whisper on my own GPU, so client calls never leave the flat</td></tr>
-      </tbody>
-    </table>
+  <section>
+    <div class="col">
+      <p class="label">The setup</p>
+      <h2>How the phone gets home</h2>
+      <p class="intro">Three hops. The middle one is rented and does no work at all — that's the whole trick.</p>
 
-    <p class="eyebrow" style="margin-top:3rem">MCP servers I connect</p>
-    <table class="kv">
-      <tbody>
-        <tr><th>telegram-mcp</th><td>Telegram account access — the one in the demo. Built by <a href="https://github.com/chigwell/telegram-mcp">chigwell</a>, not by me.</td></tr>
-        <tr><th>context7</th><td>Current library documentation, so the agent stops guessing at APIs</td></tr>
-        <tr><th>playwright</th><td>Driving a real browser for checks and screenshots</td></tr>
-      </tbody>
-    </table>
-
-    <p class="credit"><b>On that Telegram server:</b> I run it, I didn't write it. I did hit a wall — it couldn't post media into forum topics — so I added <code>reply_to</code> to <code>send_file</code> and <code>send_album</code>, wrote the tests, and sent it upstream as <a href="https://github.com/chigwell/telegram-mcp/pull/174">PR&nbsp;#174</a>. Still open. That's the honest shape of this setup: you end up fixing the tools you depend on.</p>
-  </div>
-</section>
-
-<section id="open-source">
-  <div class="wrap">
-    <p class="eyebrow">Open source</p>
-    <h2>Things I built and left public</h2>
-    <ul class="cards">
-      <li>
-        <a href="https://github.com/mmaximov97/selfhost-ai-lab">selfhost-ai-lab</a>
-        <p>Self-hosted, OpenAI-compatible gateway. Turns one machine into a local provider of LLM chat, speech-to-text and text-to-speech — your projects point at one base URL instead of a vendor. This is what transcribes my meetings.</p>
-        <p class="meta">TypeScript · <b>runs the transcription in the demo</b></p>
-      </li>
-      <li>
-        <a href="https://github.com/mmaximov97/claude-dash-cli">claude-dash-cli</a>
-        <p>Terminal dashboard for Claude usage limits, built to live in a tmux pane. Answers how much runway is left and where today's budget went, without leaving the terminal. Zero dependencies.</p>
-        <p class="meta">JavaScript · MIT · <b>zero deps</b></p>
-      </li>
-      <li>
-        <a href="https://github.com/mmaximov97/company-leadership-agent">company-leadership-agent</a>
-        <p>Discover and query company leadership through a lean RAG agent. Small on purpose — a readable example of retrieval that doesn't turn into a framework.</p>
-        <p class="meta">Python</p>
-      </li>
-      <li>
-        <a href="https://github.com/mmaximov97/jump-frame">jump-frame</a>
-        <p>Measure vertical jump height from video in the browser. Step through frames to mark takeoff and landing, get height from flight time. Auto FPS detection and honest error margins.</p>
-        <p class="meta">TypeScript · runs entirely client-side</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <p class="eyebrow">Find me</p>
-    <h2>Say hello</h2>
-    <p class="lede">Telegram is fastest. If you're building something like this and got stuck on the network part, that's my favourite kind of message.</p>
-    <div class="contact">
-      <a href="https://t.me/mmaximov97"><span>Telegram</span><b>@mmaximov97</b></a>
-      <a href="https://github.com/mmaximov97"><span>GitHub</span><b>mmaximov97</b></a>
-      <a href="https://www.linkedin.com/in/mmaximov97"><span>LinkedIn</span><b>in/mmaximov97</b></a>
-      <a href="mailto:mmaximov97@gmail.com"><span>Email</span><b>mmaximov97@gmail.com</b></a>
+      <div class="route">
+        <div class="hop">
+          <h3>Phone</h3>
+          <p>Termux · ssh · a keyboard the size of a matchbox</p>
+        </div>
+        <div class="span"><span class="dot"></span><span>WireGuard</span></div>
+        <div class="hop">
+          <h3>VPS</h3>
+          <p>public address · meeting point · computes nothing</p>
+        </div>
+        <div class="span"><span class="dot"></span><span>WireGuard</span></div>
+        <div class="hop">
+          <h3>Home server</h3>
+          <p>behind NAT · tmux · agents · repositories · transcription</p>
+        </div>
+      </div>
+      <p>Both peers dial out to the VPS, so neither needs an open port. Once the tunnel is up my phone is on the same network as my living room, and everything after that is ordinary ssh into a session that was already running.</p>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="label">What it buys</p>
+      <h2>The agent is in the chat</h2>
+      <p class="intro">A working chat is where requirements actually arrive — so that's where the agent should be.</p>
+      <p>Through an MCP server, my agent reads and writes Telegram. It sits in the chats with the people I build for. They report what's broken in their own words: no ticket, no repro steps, no screenshot.</p>
+      <p>I don't forward that message to the model. A complaint isn't a task — somebody has to decide what's actually broken, what to touch and what to leave alone. That stays my job. What the agent receives is the decision, and it reads the chat, the repository and the notes on its own. I never describe the project.</p>
+      <p>Then it's a push to staging, a few minutes of CI, and a rule I don't bend: production waits for a human to say yes.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="label">Reference</p>
+      <h2>What's actually running</h2>
+      <ul class="list">
+        <li>
+          <div class="name"><a href="https://claude.com/claude-code">Claude Code</a></div>
+          <div class="what">The agent. Several sessions in parallel, one per project.</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://obsidian.md">Obsidian</a></div>
+          <div class="what">How I read and write the vault. Plain markdown on disk, synced as a git repository.</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://github.com/tmux/tmux">tmux</a></div>
+          <div class="what">Sessions that outlive the laptop lid. Closing it changes nothing.</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://www.wireguard.com">WireGuard</a></div>
+          <div class="what">The tunnel, with a rented VPS as the meeting point between phone and home.</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://termux.dev">Termux</a></div>
+          <div class="what">A terminal on the phone. ssh and an attach, nothing custom.</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://github.com/SYSTRAN/faster-whisper">faster-whisper</a></div>
+          <div class="what">Speech to text on my own GPU, so client calls never leave the flat.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="label">Reference</p>
+      <h2>MCP servers</h2>
+      <p class="intro"><a href="https://modelcontextprotocol.io">Model Context Protocol</a> is how the agent reaches things that aren't files.</p>
+      <ul class="list">
+        <li>
+          <div class="name"><a href="https://github.com/chigwell/telegram-mcp"><span class="mono">telegram-mcp</span></a></div>
+          <div class="what">Telegram account access — the one in the demo.</div>
+          <div class="by">by chigwell · not mine</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://github.com/upstash/context7"><span class="mono">context7</span></a></div>
+          <div class="what">Current library documentation, so the agent stops guessing at APIs.</div>
+          <div class="by">by Upstash</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://github.com/microsoft/playwright-mcp"><span class="mono">playwright</span></a></div>
+          <div class="what">Driving a real browser for checks and screenshots.</div>
+          <div class="by">by Microsoft</div>
+        </li>
+      </ul>
+      <p class="note"><b>On that Telegram server:</b> I run it, I didn't write it. I did hit a wall — it couldn't post media into forum topics — so I added <code>reply_to</code> to <code>send_file</code> and <code>send_album</code>, wrote the tests, and sent it upstream as <a href="https://github.com/chigwell/telegram-mcp/pull/174">PR&nbsp;#174</a>. That's the honest shape of this setup: you end up fixing the tools you depend on.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="label">Reference</p>
+      <h2>Skills</h2>
+      <p class="intro">A <a href="https://docs.claude.com/en/docs/claude-code/skills">skill</a> is a folder with instructions the agent loads when a task matches it. Mine are how a repeated job stops being re-explained every time.</p>
+      <ul class="list">
+        <li>
+          <div class="name"><span class="mono">meeting-to-vault</span></div>
+          <div class="what">A recording becomes a transcript, then a meeting note filed in the right folder with the decisions pulled out.</div>
+        </li>
+        <li>
+          <div class="name"><span class="mono">transcribe</span></div>
+          <div class="what">Any audio file to text through my own gateway, never a cloud service.</div>
+        </li>
+        <li>
+          <div class="name"><span class="mono">task-formalizer</span></div>
+          <div class="what">A messy dump — a voice note, a chat thread — becomes real tasks, grounded in the actual files and commands of the repository.</div>
+        </li>
+        <li>
+          <div class="name"><span class="mono">prepare-public-repo</span></div>
+          <div class="what">Audits the full git history for leaked secrets before a private repository goes public. It has caught things.</div>
+        </li>
+        <li>
+          <div class="name"><span class="mono">hypothesis-mapping</span></div>
+          <div class="what">Turns a vague goal into a hypothesis map — goal, subject, hypothesis, task — so a strategy can actually be checked.</div>
+        </li>
+      </ul>
+      <p class="intro" style="margin-top:1.6rem">Two collections worth stealing from, both open: <a href="https://github.com/obra/superpowers">superpowers</a> by Jesse Vincent, and <a href="https://github.com/kepano/obsidian-skills">obsidian-skills</a> by Steph Ango.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="label">Open source</p>
+      <h2>Things I built and left public</h2>
+      <ul class="list">
+        <li>
+          <div class="name"><a href="https://github.com/mmaximov97/selfhost-ai-lab"><span class="mono">selfhost-ai-lab</span></a></div>
+          <div class="what">Self-hosted, OpenAI-compatible gateway. Turns one machine into a local provider of LLM chat, speech-to-text and text-to-speech — projects point at one base URL instead of a vendor. This is what transcribes my meetings.</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://github.com/mmaximov97/claude-dash-cli"><span class="mono">claude-dash-cli</span></a></div>
+          <div class="what">Terminal dashboard for Claude usage limits, built to live in a tmux pane. How much runway is left, where today's budget went. Zero dependencies.</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://github.com/mmaximov97/company-leadership-agent"><span class="mono">company-leadership-agent</span></a></div>
+          <div class="what">Discover and query company leadership through a lean RAG agent. Small on purpose — retrieval that doesn't turn into a framework.</div>
+        </li>
+        <li>
+          <div class="name"><a href="https://github.com/mmaximov97/jump-frame"><span class="mono">jump-frame</span></a></div>
+          <div class="what">Measure vertical jump height from video, entirely in the browser. Mark takeoff and landing, get height from flight time.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="label">Find me</p>
+      <h2>Say hello</h2>
+      <p class="intro">Telegram is fastest. If you're building something like this and got stuck on the network part, that's my favourite kind of message.</p>
+      <ul class="contact">
+        <li><a href="https://t.me/mmaximov97"><span class="where">Telegram</span><span class="handle">@mmaximov97</span></a></li>
+        <li><a href="https://github.com/mmaximov97"><span class="where">GitHub</span><span class="handle">mmaximov97</span></a></li>
+        <li><a href="https://www.linkedin.com/in/mmaximov97"><span class="where">LinkedIn</span><span class="handle">in/mmaximov97</span></a></li>
+        <li><a href="mailto:mmaximov97@gmail.com"><span class="where">Email</span><span class="handle">mmaximov97@gmail.com</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  <div class="wrap">
-    Mikhail Maximov — companion page to a 10-minute demo at Demo Night Belgrade, 19 August 2026.<br>
-    Numbers on this page were measured on the machine the morning of the talk, not recalled.
-  </div>
+  Mikhail Maximov — companion page to a ten-minute demo<br>
+  at Demo Night Belgrade, 19 August 2026.
 </footer>
 
 </body>
