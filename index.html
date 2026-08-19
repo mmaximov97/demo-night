@@ -137,6 +137,18 @@
   .list .what{color:var(--mute);font-size:.94rem;margin-top:.15rem;line-height:1.55}
   .list .by{font-family:var(--mono);font-size:.68rem;color:var(--mute);margin-top:.3rem}
 
+  .group{
+    margin:2.2rem 0 0;font-weight:600;font-size:1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--rule);
+  }
+  .group .by{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:400}
+  .skills{margin:0;padding:0;list-style:none}
+  .skills li{
+    padding:.6rem 0;border-bottom:1px solid var(--rule);
+    font-size:.92rem;color:var(--mute);line-height:1.5;
+  }
+  .skills .mono{font-family:var(--mono);font-size:.82rem;font-weight:500;color:var(--ink)}
+
   .note{
     margin:1.8rem 0 0;padding:1rem 1.15rem;
     border:1px solid var(--edge);background:#fff;
@@ -325,30 +337,42 @@ vault/
     <div class="col">
       <p class="label">Reference</p>
       <h2>Skills</h2>
-      <p class="intro">A <a href="https://docs.claude.com/en/docs/claude-code/skills">skill</a> is a folder with instructions the agent loads when a task matches it. Mine are how a repeated job stops being re-explained every time.</p>
-      <ul class="list">
-        <li>
-          <div class="name"><span class="mono">meeting-to-vault</span></div>
-          <div class="what">A recording becomes a transcript, then a meeting note filed in the right folder with the decisions pulled out.</div>
-        </li>
-        <li>
-          <div class="name"><span class="mono">transcribe</span></div>
-          <div class="what">Any audio file to text through my own gateway, never a cloud service.</div>
-        </li>
-        <li>
-          <div class="name"><span class="mono">task-formalizer</span></div>
-          <div class="what">A messy dump — a voice note, a chat thread — becomes real tasks, grounded in the actual files and commands of the repository.</div>
-        </li>
-        <li>
-          <div class="name"><span class="mono">prepare-public-repo</span></div>
-          <div class="what">Audits the full git history for leaked secrets before a private repository goes public. It has caught things.</div>
-        </li>
-        <li>
-          <div class="name"><span class="mono">hypothesis-mapping</span></div>
-          <div class="what">Turns a vague goal into a hypothesis map — goal, subject, hypothesis, task — so a strategy can actually be checked.</div>
-        </li>
+      <p class="intro">A <a href="https://docs.claude.com/en/docs/claude-code/skills">skill</a> is a folder of instructions the agent loads when a task matches it — a repeated job that stops being re-explained every time. These are the open ones I run.</p>
+
+      <p class="group"><a href="https://github.com/obra/superpowers">superpowers</a> <span class="by">by Jesse Vincent</span></p>
+      <ul class="skills">
+        <li><span class="mono">using-superpowers</span> — find and apply the right skill before doing anything else</li>
+        <li><span class="mono">brainstorming</span> — turn a rough idea into a design before any code exists</li>
+        <li><span class="mono">writing-plans</span> — a spec becomes a step-by-step implementation plan</li>
+        <li><span class="mono">executing-plans</span> — work a written plan with review checkpoints</li>
+        <li><span class="mono">subagent-driven-development</span> — hand independent tasks to separate agents</li>
+        <li><span class="mono">dispatching-parallel-agents</span> — split work with no shared state between agents</li>
+        <li><span class="mono">test-driven-development</span> — the test comes before the implementation</li>
+        <li><span class="mono">systematic-debugging</span> — investigate a failure before proposing a fix</li>
+        <li><span class="mono">requesting-code-review</span> — check work against requirements before merging</li>
+        <li><span class="mono">receiving-code-review</span> — verify feedback instead of agreeing with it</li>
+        <li><span class="mono">verification-before-completion</span> — run the command before claiming it passes</li>
+        <li><span class="mono">finishing-a-development-branch</span> — decide how finished work gets integrated</li>
+        <li><span class="mono">using-git-worktrees</span> — isolate feature work in its own workspace</li>
+        <li><span class="mono">writing-skills</span> — create, edit and verify a new skill</li>
       </ul>
-      <p class="intro" style="margin-top:1.6rem">Two collections worth stealing from, both open: <a href="https://github.com/obra/superpowers">superpowers</a> by Jesse Vincent, and <a href="https://github.com/kepano/obsidian-skills">obsidian-skills</a> by Steph Ango.</p>
+
+      <p class="group"><a href="https://github.com/kepano/obsidian-skills">obsidian-skills</a> <span class="by">by Steph Ango</span></p>
+      <ul class="skills">
+        <li><span class="mono">obsidian-markdown</span> — wikilinks, callouts, properties, embeds</li>
+        <li><span class="mono">obsidian-cli</span> — read, create and search vault notes from the terminal</li>
+        <li><span class="mono">obsidian-bases</span> — database views over notes, with filters and formulas</li>
+        <li><span class="mono">json-canvas</span> — canvases, mind maps and flowcharts as files</li>
+        <li><span class="mono">defuddle</span> — pull clean markdown out of a web page</li>
+      </ul>
+
+      <p class="group"><a href="https://docs.claude.com/en/docs/claude-code/plugins">Anthropic plugins</a> <span class="by">official marketplace</span></p>
+      <ul class="skills">
+        <li><span class="mono">frontend-design</span> — visual direction that doesn't read as a template</li>
+        <li><span class="mono">skill-creator</span> — build, edit and benchmark skills</li>
+        <li><span class="mono">claude-md-improver</span> — audit and repair project instruction files</li>
+        <li><span class="mono">claude-automation-recommender</span> — suggest hooks, agents and skills for a repository</li>
+      </ul>
     </div>
   </section>
 
@@ -364,14 +388,6 @@ vault/
         <li>
           <div class="name"><a href="https://github.com/mmaximov97/claude-dash-cli"><span class="mono">claude-dash-cli</span></a></div>
           <div class="what">Terminal dashboard for Claude usage limits, built to live in a tmux pane. How much runway is left, where today's budget went. Zero dependencies.</div>
-        </li>
-        <li>
-          <div class="name"><a href="https://github.com/mmaximov97/company-leadership-agent"><span class="mono">company-leadership-agent</span></a></div>
-          <div class="what">Discover and query company leadership through a lean RAG agent. Small on purpose — retrieval that doesn't turn into a framework.</div>
-        </li>
-        <li>
-          <div class="name"><a href="https://github.com/mmaximov97/jump-frame"><span class="mono">jump-frame</span></a></div>
-          <div class="what">Measure vertical jump height from video, entirely in the browser. Mark takeoff and landing, get height from flight time.</div>
         </li>
       </ul>
     </div>
