@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collect · Curate · Reach — Mikhail Maximov</title>
+<meta name="description" content="The context system behind the agents I run: three rules, the setup, and every link from the Demo Night Belgrade talk.">
+<meta property="og:title" content="Collect · Curate · Reach">
+<meta property="og:description" content="Companion page to the Demo Night Belgrade talk — three rules for the context your agents read.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1420;
+    --ink-2:#161E2E;
+    --wire:#2A3852;
+    --bone:#E9E2D2;
+    --dim:#8E9AAE;
+    --signal:#F0A343;
+    --live:#6FC9A8;
+
+    --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+    --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+    --measure:34rem;
+    --pad:clamp(1.25rem,5vw,2.5rem);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--body);
+    font-size:clamp(1.02rem,0.98rem + 0.2vw,1.12rem);
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--signal);color:var(--ink)}
+
+  a{color:var(--bone);text-decoration-color:var(--wire);text-underline-offset:.22em;text-decoration-thickness:1px}
+  a:hover{text-decoration-color:var(--signal)}
+  a:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:60rem;margin:0 auto;padding:0 var(--pad)}
+  .prose{max-width:var(--measure)}
+
+  /* ---------- shared type ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--dim);
+    margin:0 0 1.4rem;
+    display:flex;align-items:center;gap:.85rem;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--wire)}
+
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.06;letter-spacing:-.02em;margin:0}
+  h2{font-size:clamp(1.6rem,1.2rem + 1.9vw,2.4rem);font-weight:700}
+  h3{font-size:1.06rem;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(3.5rem,10vw,7rem) 0 clamp(2.5rem,6vw,4rem)}
+  .hero h1{
+    font-size:clamp(2.35rem,1.3rem + 5.4vw,4.6rem);
+    max-width:16ch;
+    margin-bottom:1.6rem;
+  }
+  .hero h1 em{font-style:normal;color:var(--signal)}
+  .hero p{max-width:var(--measure);color:var(--bone);margin:0 0 2.4rem}
+
+  .stamp{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;color:var(--dim);
+    display:flex;flex-wrap:wrap;gap:.4rem .7rem;align-items:center;
+    padding-top:1.4rem;border-top:1px solid var(--wire);
+    max-width:var(--measure);
+  }
+  .stamp b{color:var(--bone);font-weight:500}
+  .stamp span[aria-hidden]{color:var(--signal)}
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--wire)}
+  section > .wrap > h2{margin-bottom:1.4rem}
+  .lede{max-width:var(--measure);color:var(--dim);margin:0 0 2.8rem}
+
+  /* ---------- the three rules ---------- */
+  .rule{
+    display:grid;
+    grid-template-columns:1fr;
+    padding-bottom:2.6rem;
+  }
+  .rule:last-of-type{padding-bottom:0}
+  .rule__num{
+    font-family:var(--mono);font-size:.78rem;color:var(--signal);
+    margin-bottom:.9rem;
+  }
+  @media(min-width:44rem){
+    .rule{grid-template-columns:auto 1fr;column-gap:2.2rem}
+    .rule__num{
+      grid-column:1;grid-row:1 / -1;
+      margin-bottom:0;padding-top:.4rem;position:relative;
+    }
+    .rule > :not(.rule__num){grid-column:2}
+    .rule:not(:last-of-type) .rule__num::after{
+      content:"";position:absolute;left:50%;top:2.2rem;bottom:-2.6rem;
+      width:1px;background:var(--wire);
+    }
+  }
+  .rule h3{margin-bottom:.7rem}
+  .rule h3 small{
+    display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem;
+  }
+  .rule p{margin:0 0 1rem;max-width:var(--measure)}
+  .rule p:last-child{margin-bottom:0}
+  .facts{
+    list-style:none;margin:1.1rem 0 0;padding:0;
+    display:flex;flex-wrap:wrap;gap:.4rem;
+    font-family:var(--mono);font-size:.74rem;
+  }
+  .facts li{
+    border:1px solid var(--wire);border-radius:999px;
+    padding:.28rem .7rem;color:var(--dim);
+  }
+  .facts b{color:var(--live);font-weight:500}
+
+  .chain{
+    font-family:var(--mono);font-size:.78rem;color:var(--dim);
+    margin:2.6rem 0 0;padding:1rem 1.1rem;
+    border:1px solid var(--wire);border-left:2px solid var(--signal);
+    max-width:var(--measure);line-height:1.7;
+  }
+
+  /* ---------- signature: the route ---------- */
+  .route{margin:0;padding:0;max-width:26rem}
+  .node{
+    border:1px solid var(--wire);
+    background:var(--ink-2);
+    padding:1rem 1.1rem;
+  }
+  .node h3{font-size:.98rem;margin-bottom:.35rem}
+  .node p{margin:0;font-family:var(--mono);font-size:.74rem;line-height:1.65;color:var(--dim)}
+  .node--edge{border-color:var(--signal)}
+  .node--edge h3{color:var(--signal)}
+  .node__tag{
+    display:inline-block;font-family:var(--mono);font-size:.66rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+    background:var(--signal);padding:.1rem .45rem;margin-bottom:.55rem;
+  }
+  .link{
+    position:relative;height:4.6rem;margin-left:1.6rem;
+    border-left:1px solid var(--wire);
+    display:flex;align-items:center;
+  }
+  .link__label{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);padding-left:.9rem;
+  }
+  .packet{
+    position:absolute;left:-3px;top:0;width:5px;height:16px;
+    background:var(--signal);border-radius:3px;
+    animation:travel 2.6s cubic-bezier(.55,.1,.5,.9) infinite;
+  }
+  .link:nth-of-type(4) .packet{animation-delay:1.3s}
+  @keyframes travel{
+    0%{transform:translateY(-16px);opacity:0}
+    12%{opacity:1}
+    88%{opacity:1}
+    100%{transform:translateY(4.6rem);opacity:0}
+  }
+  .route-note{
+    font-family:var(--mono);font-size:.76rem;color:var(--dim);
+    margin:1.8rem 0 0;max-width:30rem;line-height:1.7;
+  }
+
+  /* ---------- tables / lists ---------- */
+  .kv{width:100%;border-collapse:collapse;font-size:.94rem;max-width:46rem}
+  .kv th,.kv td{text-align:left;padding:.72rem .8rem .72rem 0;border-bottom:1px solid var(--wire);vertical-align:top}
+  .kv th{
+    font-family:var(--mono);font-weight:500;font-size:.78rem;color:var(--bone);
+    white-space:nowrap;width:11rem;
+  }
+  .kv td{color:var(--dim)}
+
+  @media(max-width:33.99rem){
+    .kv,.kv tbody,.kv tr,.kv th,.kv td{display:block;width:auto}
+    .kv tr{padding:.85rem 0;border-bottom:1px solid var(--wire)}
+    .kv tr:last-child{border-bottom:0}
+    .kv th,.kv td{border:0;padding:0;white-space:normal}
+    .kv th{margin-bottom:.3rem;color:var(--signal)}
+  }
+
+  .cards{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--wire);border:1px solid var(--wire)}
+  @media(min-width:44rem){.cards{grid-template-columns:1fr 1fr}}
+  .cards li{background:var(--ink);padding:1.15rem 1.25rem}
+  .cards a{font-family:var(--display);font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:-.01em}
+  .cards a::after{content:" ↗";color:var(--dim);font-weight:400;font-size:.85em}
+  .cards a:hover{color:var(--signal)}
+  .cards p{margin:.5rem 0 0;font-size:.9rem;color:var(--dim);line-height:1.55}
+  .cards .meta{font-family:var(--mono);font-size:.7rem;color:var(--dim);margin-top:.7rem;letter-spacing:.08em;text-transform:uppercase}
+  .cards .meta b{color:var(--live);font-weight:500}
+
+  .credit{
+    margin:2.2rem 0 0;padding:1.1rem 1.2rem;border:1px solid var(--wire);
+    max-width:var(--measure);font-size:.94rem;color:var(--dim);
+  }
+  .credit b{color:var(--bone);font-weight:600}
+
+  /* ---------- contact ---------- */
+  .contact{display:grid;gap:1px;background:var(--wire);border:1px solid var(--wire);max-width:40rem}
+  @media(min-width:34rem){.contact{grid-template-columns:1fr 1fr}}
+  .contact a{
+    background:var(--ink);padding:1.1rem 1.2rem;text-decoration:none;display:block;
+  }
+  .contact a:hover{background:var(--ink-2)}
+  .contact span{
+    display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:.35rem;
+  }
+  .contact b{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-.01em}
+  .contact a:hover b{color:var(--signal)}
+
+  footer{padding:3rem 0 4rem;border-top:1px solid var(--wire);color:var(--dim);font-family:var(--mono);font-size:.74rem;line-height:1.8}
+
+  @media (prefers-reduced-motion:reduce){
+    .packet{animation:none;top:calc(50% - 8px);opacity:1}
+    *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Demo Night Belgrade · 19 Aug 2026</p>
+    <h1>Seven hundred thousand words I <em>don't</em> remember.</h1>
+    <p class="prose">Everything in the demo sits on one thing: a pile of notes my agents can read. Not a smarter model, not a better prompt — notes. Here are the three rules that keep those notes worth reading, and every link from the talk.</p>
+    <p class="stamp">
+      <b>This page started as a voice note.</b>
+      <span aria-hidden="true">→</span> 4 min of talking
+      <span aria-hidden="true">→</span> transcribed on a server in my flat
+      <span aria-hidden="true">→</span> a note
+      <span aria-hidden="true">→</span> this
+    </p>
+  </div>
+</header>
+
+<section id="rules">
+  <div class="wrap">
+    <h2>Three rules</h2>
+    <p class="lede">They're numbered because they're a chain, not a menu. Each one is wasted without the one before it.</p>
+
+    <article class="rule">
+      <div class="rule__num">01</div>
+      <h3><small>Collect</small>Gather more context than feels reasonable</h3>
+      <p>Four things go into the vault. <b>Specs</b> — what I'm building and why, written before the code. <b>Meetings</b> — every call recorded and transcribed. <b>Voice notes</b> — I talk while walking, it lands as text. <b>Decisions</b> — not only what I picked, but what I turned down and why.</p>
+      <p>That last one is the category a model can never rebuild by reading the repository. Code shows the decision that survived. Notes show the four that didn't, which is usually the question being asked.</p>
+      <ul class="facts">
+        <li><b>875</b> notes</li>
+        <li><b>726,000</b> words</li>
+        <li><b>13</b> meeting transcripts</li>
+        <li>since <b>2 Jul 2025</b></li>
+      </ul>
+    </article>
+
+    <article class="rule">
+      <div class="rule__num">02</div>
+      <h3><small>Curate</small>Context rots, so schedule the cleaning</h3>
+      <p>Models generate quickly. Let everything they write land in your notes and within a month you own a well-formatted archive of confident nonsense. Once a week I delete what's dead and fact-check what's new — models are good at catching a claim with nothing behind it.</p>
+      <p>The part that actually holds isn't discipline, it's a file. A hundred lines of conventions in the vault root tell the agent where notes go, how tasks are formatted, and what never to write. Curation is a config, not a mood.</p>
+      <ul class="facts">
+        <li>weekly pass</li>
+        <li><b>101</b> lines of conventions</li>
+        <li>fact-check by model, decision by me</li>
+      </ul>
+    </article>
+
+    <article class="rule">
+      <div class="rule__num">03</div>
+      <h3><small>Reach</small>Context you can't reach is context you don't have</h3>
+      <p>A server sits in my apartment with no public address, behind NAT like everyone's. A small rented VPS is the meeting point: the server holds a tunnel to it, my phone holds a tunnel to it, and my phone lands inside my home network. The VPS computes nothing.</p>
+      <p>After that it's just ssh. The session on the server doesn't die when I shut the laptop — I attach to the same screen from the street, and the agent has been working the whole way.</p>
+      <ul class="facts">
+        <li>session alive <b>11 days</b></li>
+        <li>server up <b>3 weeks</b></li>
+        <li>WireGuard, not a SaaS tunnel</li>
+      </ul>
+    </article>
+
+    <p class="chain">collect → nothing to curate<br>curate → nothing worth reaching for<br>reach → back to collect, from anywhere</p>
+  </div>
+</section>
+
+<section id="route">
+  <div class="wrap">
+    <p class="eyebrow">The setup</p>
+    <h2>How the phone gets home</h2>
+    <p class="lede">Three hops. The middle one is rented and does no work at all — that's the whole trick.</p>
+
+    <figure class="route">
+      <div class="node node--edge">
+        <span class="node__tag">you are here</span>
+        <h3>Phone</h3>
+        <p>Termux · ssh · a keyboard the size of a matchbox</p>
+      </div>
+      <div class="link"><span class="packet"></span><span class="link__label">WireGuard</span></div>
+      <div class="node">
+        <h3>VPS</h3>
+        <p>public address · meeting point · computes nothing</p>
+      </div>
+      <div class="link"><span class="packet"></span><span class="link__label">WireGuard</span></div>
+      <div class="node node--edge">
+        <h3>Home server</h3>
+        <p>behind NAT · tmux · agents · repositories · transcription</p>
+      </div>
+      <figcaption class="route-note">Both peers dial out to the VPS, so neither needs an open port. Once the tunnel is up my phone is on the same network as my living room, and everything after that is ordinary ssh into a tmux session that was already running.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="loop">
+  <div class="wrap">
+    <p class="eyebrow">What it buys</p>
+    <h2>The agent is in the chat</h2>
+    <div class="prose">
+      <p>Through an MCP server, my agent reads and writes Telegram. It sits in the working chats with the people I build for. Anya designs my nutrition app and reports what's broken in her own words — no ticket, no repro steps, no screenshot.</p>
+      <p>I don't forward her message to the model. A complaint isn't a task: somebody has to decide what's actually broken, what to touch and what to leave alone. That stays my job. What the agent receives is the decision, and it reads the chat, the repository and the notes on its own — I never describe the project.</p>
+      <p>Then it's a push to staging, three and a half minutes of CI, and a rule I don't bend: production waits for Anya to say ок. She's a better QA than my test suite.</p>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <p class="eyebrow">Tools</p>
+    <h2>What's actually running</h2>
+    <table class="kv">
+      <tbody>
+        <tr><th>Agent</th><td>Claude Code, several sessions in parallel</td></tr>
+        <tr><th>Notes</th><td>Obsidian over a git repository — plain markdown, no database</td></tr>
+        <tr><th>Session</th><td>tmux on the home server, so closing the laptop changes nothing</td></tr>
+        <tr><th>Network</th><td>WireGuard, with a rented VPS as the meeting point</td></tr>
+        <tr><th>Phone</th><td>Termux — ssh and a tmux attach, nothing custom</td></tr>
+        <tr><th>Transcription</th><td>faster-whisper on my own GPU, so client calls never leave the flat</td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin-top:3rem">MCP servers I connect</p>
+    <table class="kv">
+      <tbody>
+        <tr><th>telegram-mcp</th><td>Telegram account access — the one in the demo. Built by <a href="https://github.com/chigwell/telegram-mcp">chigwell</a>, not by me.</td></tr>
+        <tr><th>context7</th><td>Current library documentation, so the agent stops guessing at APIs</td></tr>
+        <tr><th>playwright</th><td>Driving a real browser for checks and screenshots</td></tr>
+      </tbody>
+    </table>
+
+    <p class="credit"><b>On that Telegram server:</b> I run it, I didn't write it. I did hit a wall — it couldn't post media into forum topics — so I added <code>reply_to</code> to <code>send_file</code> and <code>send_album</code>, wrote the tests, and sent it upstream as <a href="https://github.com/chigwell/telegram-mcp/pull/174">PR&nbsp;#174</a>. Still open. That's the honest shape of this setup: you end up fixing the tools you depend on.</p>
+  </div>
+</section>
+
+<section id="open-source">
+  <div class="wrap">
+    <p class="eyebrow">Open source</p>
+    <h2>Things I built and left public</h2>
+    <ul class="cards">
+      <li>
+        <a href="https://github.com/mmaximov97/selfhost-ai-lab">selfhost-ai-lab</a>
+        <p>Self-hosted, OpenAI-compatible gateway. Turns one machine into a local provider of LLM chat, speech-to-text and text-to-speech — your projects point at one base URL instead of a vendor. This is what transcribes my meetings.</p>
+        <p class="meta">TypeScript · <b>runs the transcription in the demo</b></p>
+      </li>
+      <li>
+        <a href="https://github.com/mmaximov97/claude-dash-cli">claude-dash-cli</a>
+        <p>Terminal dashboard for Claude usage limits, built to live in a tmux pane. Answers how much runway is left and where today's budget went, without leaving the terminal. Zero dependencies.</p>
+        <p class="meta">JavaScript · MIT · <b>zero deps</b></p>
+      </li>
+      <li>
+        <a href="https://github.com/mmaximov97/company-leadership-agent">company-leadership-agent</a>
+        <p>Discover and query company leadership through a lean RAG agent. Small on purpose — a readable example of retrieval that doesn't turn into a framework.</p>
+        <p class="meta">Python</p>
+      </li>
+      <li>
+        <a href="https://github.com/mmaximov97/jump-frame">jump-frame</a>
+        <p>Measure vertical jump height from video in the browser. Step through frames to mark takeoff and landing, get height from flight time. Auto FPS detection and honest error margins.</p>
+        <p class="meta">TypeScript · runs entirely client-side</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Find me</p>
+    <h2>Say hello</h2>
+    <p class="lede">Telegram is fastest. If you're building something like this and got stuck on the network part, that's my favourite kind of message.</p>
+    <div class="contact">
+      <a href="https://t.me/mmaximov97"><span>Telegram</span><b>@mmaximov97</b></a>
+      <a href="https://github.com/mmaximov97"><span>GitHub</span><b>mmaximov97</b></a>
+      <a href="https://www.linkedin.com/in/mmaximov97"><span>LinkedIn</span><b>in/mmaximov97</b></a>
+      <a href="mailto:mmaximov97@gmail.com"><span>Email</span><b>mmaximov97@gmail.com</b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Mikhail Maximov — companion page to a 10-minute demo at Demo Night Belgrade, 19 August 2026.<br>
+    Numbers on this page were measured on the machine the morning of the talk, not recalled.
+  </div>
+</footer>
+
+</body>
+</html>
