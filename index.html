@@ -244,10 +244,15 @@
     fill:none;stroke:var(--ink);stroke-width:1.8;
     stroke-linecap:round;stroke-linejoin:round;
   }
-  .slide-rules .rule-line{
-    margin:.65rem 0 0;font-size:clamp(.88rem,1.3vw,1.12rem);
-    line-height:1.5;color:var(--mute);
+  .slide-rules .rule-num{
+    margin:0;font-family:var(--mono);font-size:.72rem;
+    letter-spacing:.16em;color:var(--mute);
   }
+  .slide-rules .rule-name{
+    margin:.5rem 0 0;font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.8rem,3.6vw,3rem);line-height:1;letter-spacing:-.01em;
+  }
+  .slide-rules .rules-row{margin-top:2.6rem}
   .slide-rules h2{font-size:clamp(1.9rem,4.6vw,3.6rem)}
   @media(max-width:44rem){.slide-rules .rules-row{flex-direction:column;gap:1.1rem}}
 
@@ -769,21 +774,20 @@ vault/
     <div class="rules-row">
       <div class="rule-col">
         <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3v15"/><path d="M10.5 12.5L16 18l5.5-5.5"/><path d="M4 20v8h24v-8"/></svg>
-        <p class="label">01 — Collect</p>
-        <p class="rule-line">Gather more context than feels reasonable. Meetings, voice notes, specs, decisions, ideas, research.</p>
+        <p class="rule-num">01</p>
+        <h3 class="rule-name">Collect</h3>
       </div>
       <div class="rule-col">
         <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 5h24l-9 10.5V27l-6-3.5V15.5z"/></svg>
-        <p class="label">02 — Curate</p>
-        <p class="rule-line">Context rots. Delete what's dead, fact-check what's new. Conventions live in a file, not in my head.</p>
+        <p class="rule-num">02</p>
+        <h3 class="rule-name">Curate</h3>
       </div>
       <div class="rule-col">
         <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23Q16 3 27 23"/><circle cx="5" cy="24" r="3.2"/><circle cx="27" cy="24" r="3.2"/></svg>
-        <p class="label">03 — Reach</p>
-        <p class="rule-line">Context you can't reach is context you don't have. It has to be there when I'm not at a desk.</p>
+        <p class="rule-num">03</p>
+        <h3 class="rule-name">Reach</h3>
       </div>
     </div>
-    <p class="credit-line">Setup borrowed from <b>@levelsio</b> — one machine, no devops. The context layer is the part I added.</p>
   </article>
 
   <article class="slide slide-diagram">
