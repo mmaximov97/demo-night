@@ -251,6 +251,18 @@
     padding:1.1rem 1.25rem;
   }
   .slide-vault h2{font-size:clamp(1.9rem,4.4vw,3.4rem)}
+  .tangle{width:100%;max-width:30rem;height:auto;display:block}
+  .tangle .card rect{fill:#fff;stroke:#C9C9C2;stroke-width:1.5}
+  .tangle .thread path{fill:none;stroke:#B0B0A9;stroke-width:1.5}
+  .tangle .figure circle,.tangle .figure path{fill:var(--ink)}
+  .tangle .figure .arm{fill:none;stroke:var(--ink);stroke-width:9;stroke-linecap:round}
+
+  .slop .gone{color:#B0B0A9}
+  .slop .kept{color:var(--ink);font-weight:500}
+  .slop-note{
+    margin:1rem 0 0;font-size:clamp(.85rem,1.2vw,1rem);
+    color:var(--mute);line-height:1.5;max-width:36ch;
+  }
   .slide .route{max-width:26rem;width:100%}
   .agents{display:flex;flex-wrap:wrap;gap:clamp(1.4rem,4vw,3.2rem);margin-top:2.4rem}
   .agent{display:flex;align-items:center;gap:.9rem}
@@ -635,25 +647,31 @@ vault/
 
   <article class="slide slide-diagram">
     <p class="label">01 — Collect · how it lands</p>
-    <svg class="diagram" viewBox="0 0 980 400" role="img" aria-label="Meetings and voice notes are transcribed locally; specs and decisions are written straight into the vault; a weekly pass cleans it; agents read it">
-      <rect class="box" x="10" y="34" width="196" height="58" rx="6"/>
-      <text class="sm" x="108" y="69" text-anchor="middle">Meetings</text>
-      <rect class="box" x="10" y="110" width="196" height="58" rx="6"/>
-      <text class="sm" x="108" y="145" text-anchor="middle">Voice notes</text>
-      <rect class="box" x="10" y="212" width="196" height="58" rx="6"/>
-      <text class="sm" x="108" y="247" text-anchor="middle">Specs</text>
-      <rect class="box" x="10" y="288" width="196" height="58" rx="6"/>
-      <text class="sm" x="108" y="323" text-anchor="middle">Decisions</text>
+    <svg class="diagram" viewBox="0 0 980 400" role="img" aria-label="Meetings and voice notes are transcribed locally; specs, decisions, ideas and research are written straight into the vault; a weekly pass cleans it; agents read it">
+      <rect class="box" x="10" y="24" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="52" text-anchor="middle">Meetings</text>
+      <rect class="box" x="10" y="84" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="112" text-anchor="middle">Voice notes</text>
+      <rect class="box" x="10" y="144" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="172" text-anchor="middle">Specs</text>
+      <rect class="box" x="10" y="204" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="232" text-anchor="middle">Decisions</text>
+      <rect class="box" x="10" y="264" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="292" text-anchor="middle">Ideas</text>
+      <rect class="box" x="10" y="324" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="352" text-anchor="middle">Research</text>
 
-      <rect class="box" x="286" y="72" width="196" height="58" rx="6"/>
-      <text class="sm" x="384" y="99" text-anchor="middle">Transcribed</text>
-      <text class="tag" x="384" y="119" text-anchor="middle">on my own GPU</text>
+      <rect class="box" x="286" y="40" width="196" height="58" rx="6"/>
+      <text class="sm" x="384" y="67" text-anchor="middle">Transcribed</text>
+      <text class="tag" x="384" y="87" text-anchor="middle">on my own GPU</text>
 
-      <path class="wire" d="M211 63 L281 92" marker-end="url(#tip2)"/>
-      <path class="wire" d="M211 139 L281 112" marker-end="url(#tip2)"/>
-      <path class="wire" d="M487 101 L556 160" marker-end="url(#tip2)"/>
-      <path class="wire" d="M211 241 L556 205" marker-end="url(#tip2)"/>
-      <path class="wire" d="M211 317 L556 225" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 46 L281 58" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 106 L281 80" marker-end="url(#tip2)"/>
+      <path class="wire" d="M487 69 L556 155" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 166 L556 178" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 226 L556 196" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 286 L556 214" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 346 L556 232" marker-end="url(#tip2)"/>
 
       <rect class="box" x="562" y="120" width="180" height="150" rx="6"/>
       <text class="ttl" x="652" y="180" text-anchor="middle">The vault</text>
@@ -667,7 +685,7 @@ vault/
       <text class="sm" x="888" y="214" text-anchor="middle">read it</text>
       <path class="flow" d="M747 195 L801 195" marker-end="url(#tip3)"/>
 
-      <text class="tag" x="490" y="382" text-anchor="middle">nothing leaves the flat until I decide it should</text>
+      <text class="tag" x="490" y="388" text-anchor="middle">nothing leaves the flat until I decide it should</text>
 
       <defs>
         <marker id="tip2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
@@ -682,6 +700,7 @@ vault/
       <ul class="skills">
         <li><span class="mono">Meetings, voice notes</span> — transcribed on my own GPU</li>
         <li><span class="mono">Specs, decisions</span> — written straight in</li>
+        <li><span class="mono">Ideas, research</span> — same, before they are worth anything</li>
         <li><span class="mono">The vault</span> — markdown in git</li>
         <li><span class="mono">Weekly pass</span> — delete what's dead, fact-check what's new</li>
         <li><span class="mono">Agents</span> — read all of it</li>
@@ -689,16 +708,67 @@ vault/
     </div>
   </article>
 
-  <article class="slide">
-    <p class="label">02 — Curate</p>
-    <h2>Context <em>rots</em></h2>
-    <p class="sub">Delete what's dead, fact-check what's new. The conventions live in a file, not in my head.</p>
+  <article class="slide slide-split slide-vault">
+    <div class="side">
+      <p class="label">02 — Curate</p>
+      <h2>Context <em>rots</em></h2>
+      <p class="sub">Delete what's dead, fact-check what's new. The conventions live in a file, not in my head.</p>
+    </div>
+    <div class="side">
+      <p class="ob-cap">one weekly pass · what goes, what stays</p>
+<pre class="slop"><span class="gone">- It is important to note that this approach
+- offers several key advantages and can be
+- adapted to a variety of different contexts.
+
+- Overall, this represents a robust and scalable
+- solution that leverages industry best practices
+- to unlock significant value going forward.</span>
+
+<span class="kept">+ Rejected Postgres for the vault. Nobody to
++ run it but me. Files won. — 14 Jul</span>
+</pre>
+      <p class="slop-note">Six lines that survived a model and said nothing. One line that will still be worth reading in a year.</p>
+    </div>
   </article>
 
-  <article class="slide">
-    <p class="label">03 — Reach</p>
-    <h2>Context you can't reach is context you don't have</h2>
-    <p class="sub">Phone, tunnel, the tower in my flat. After that it's just ssh — and the session never died.</p>
+  <article class="slide slide-split slide-vault">
+    <div class="side">
+      <p class="label">03 — Reach</p>
+      <h2>Context you can't reach is context you don't have</h2>
+      <p class="sub">Phone, tunnel, the tower in my flat. After that it's just ssh — and the session never died.</p>
+    </div>
+    <div class="side">
+      <svg class="tangle" viewBox="0 0 560 430" role="img" aria-label="A small figure standing under a tangle of notes and threads, unable to reach any of them">
+        <g class="card">
+          <rect x="18" y="26" width="96" height="54" rx="4"/>
+          <rect x="196" y="10" width="96" height="54" rx="4"/>
+          <rect x="392" y="34" width="96" height="54" rx="4"/>
+          <rect x="452" y="150" width="96" height="54" rx="4"/>
+          <rect x="16" y="168" width="96" height="54" rx="4"/>
+          <rect x="404" y="278" width="96" height="54" rx="4"/>
+          <rect x="52" y="300" width="96" height="54" rx="4"/>
+        </g>
+        <g class="thread">
+          <path d="M114 53 C220 90 300 40 392 61"/>
+          <path d="M244 64 C250 160 190 210 100 195"/>
+          <path d="M440 61 C380 140 330 150 292 250"/>
+          <path d="M452 177 C360 200 300 170 244 64"/>
+          <path d="M64 222 C120 280 240 250 404 305"/>
+          <path d="M100 327 C170 280 210 200 292 250"/>
+          <path d="M452 177 C380 300 200 300 100 327"/>
+          <path d="M114 53 C180 190 320 210 500 278"/>
+          <path d="M292 250 C200 220 160 120 196 37"/>
+          <path d="M292 250 C400 240 430 200 500 204"/>
+        </g>
+        <g class="figure">
+          <circle cx="280" cy="290" r="15"/>
+          <path d="M266 312 L294 312 L300 372 L260 372 Z"/>
+          <path class="arm" d="M268 316 L242 276"/>
+          <path class="arm" d="M292 316 L318 276"/>
+        </g>
+      </svg>
+      <p class="slop-note">It is all written down. None of it is where you happen to be standing.</p>
+    </div>
   </article>
 
   <article class="slide slide-diagram">
