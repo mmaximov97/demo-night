@@ -237,6 +237,27 @@
   }
   .credit-line b{color:var(--ink);font-weight:500}
 
+  .slide-rules .rules-row{display:flex;gap:clamp(1.2rem,3vw,2.6rem);margin-top:2.2rem}
+  .slide-rules .rule-col{flex:1;min-width:0;border-top:1px solid var(--rule);padding-top:.9rem}
+  .slide-rules .rule-line{
+    margin:.65rem 0 0;font-size:clamp(.88rem,1.3vw,1.12rem);
+    line-height:1.5;color:var(--mute);
+  }
+  .slide-rules h2{font-size:clamp(1.9rem,4.6vw,3.6rem)}
+  @media(max-width:44rem){.slide-rules .rules-row{flex-direction:column;gap:1.1rem}}
+
+  .wide{margin:1.9rem 0 0}
+  .wide .ob-cap{
+    margin:0 0 .8rem;font-family:var(--mono);font-size:.68rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--mute);
+  }
+  @media(max-width:44rem){
+    .wide .slop{font-size:.62rem;line-height:1.75;padding:.9rem 1rem}
+  }
+  .wide .diagram,.wide .tangle{max-width:100%;margin-left:0;margin-right:0}
+  .wide .slop-note{margin-top:.8rem}
+  section .agents{margin-top:1.9rem}
+
   .slide-title{align-items:center;text-align:center}
   .slide-title .mark{height:clamp(56px,9vw,96px);margin-bottom:1.8rem}
   .slide-title h2{max-width:none}
@@ -383,6 +404,66 @@ vault/
 </pre>
           <figcaption>Boring on purpose. Every client and every product gets one folder holding its spec, its decisions and its call transcripts — the agent finds things by reading, not by clever structure.</figcaption>
         </figure>
+
+        <figure class="wide"><svg class="diagram" viewBox="0 0 980 400" role="img" aria-label="Meetings and voice notes are transcribed locally; specs, decisions, ideas and research are written straight into the vault; a weekly pass cleans it; agents read it">
+      <rect class="box" x="10" y="24" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="52" text-anchor="middle">Meetings</text>
+      <rect class="box" x="10" y="84" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="112" text-anchor="middle">Voice notes</text>
+      <rect class="box" x="10" y="144" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="172" text-anchor="middle">Specs</text>
+      <rect class="box" x="10" y="204" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="232" text-anchor="middle">Decisions</text>
+      <rect class="box" x="10" y="264" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="292" text-anchor="middle">Ideas</text>
+      <rect class="box" x="10" y="324" width="196" height="44" rx="6"/>
+      <text class="sm" x="108" y="352" text-anchor="middle">Research</text>
+
+      <rect class="box" x="286" y="40" width="196" height="58" rx="6"/>
+      <text class="sm" x="384" y="67" text-anchor="middle">Transcribed</text>
+      <text class="tag" x="384" y="87" text-anchor="middle">on my own GPU</text>
+
+      <path class="wire" d="M211 46 L281 58" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 106 L281 80" marker-end="url(#tip2)"/>
+      <path class="wire" d="M487 69 L556 155" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 166 L556 178" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 226 L556 196" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 286 L556 214" marker-end="url(#tip2)"/>
+      <path class="wire" d="M211 346 L556 232" marker-end="url(#tip2)"/>
+
+      <rect class="box" x="562" y="120" width="180" height="150" rx="6"/>
+      <text class="ttl" x="652" y="180" text-anchor="middle">The vault</text>
+      <text class="sm" x="652" y="206" text-anchor="middle">markdown in git</text>
+
+      <path class="flow" d="M604 118 C604 56 700 56 700 118" marker-end="url(#tip3)"/>
+      <text class="tag" x="652" y="44" text-anchor="middle">weekly pass — delete, fact-check</text>
+
+      <rect class="box" x="806" y="150" width="164" height="90" rx="6"/>
+      <text class="ttl" x="888" y="190" text-anchor="middle">Agents</text>
+      <text class="sm" x="888" y="214" text-anchor="middle">read it</text>
+      <path class="flow" d="M747 195 L801 195" marker-end="url(#tip3)"/>
+
+      <text class="tag" x="490" y="388" text-anchor="middle">nothing leaves the flat until I decide it should</text>
+
+      <defs>
+        <marker id="tip2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#71736F"/>
+        </marker>
+        <marker id="tip3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#15171A"/>
+        </marker>
+      </defs>
+    </svg><div class="dgm-fallback">
+      <ul class="skills">
+        <li><span class="mono">Meetings, voice notes</span> — transcribed on my own GPU</li>
+        <li><span class="mono">Specs, decisions</span> — written straight in</li>
+        <li><span class="mono">Ideas, research</span> — same, before they are worth anything</li>
+        <li><span class="mono">The vault</span> — markdown in git</li>
+        <li><span class="mono">Weekly pass</span> — delete what's dead, fact-check what's new</li>
+        <li><span class="mono">Agents</span> — read all of it</li>
+      </ul>
+    </div>
+  </figure>
       </article>
 
       <article class="rule">
@@ -390,6 +471,20 @@ vault/
         <h3>Context rots, so schedule the cleaning</h3>
         <p>Models generate quickly. Let everything they write land in your notes and within a month you own a well-formatted archive of confident nonsense. Once a week I delete what's dead and fact-check what's new — models are good at catching a claim with nothing behind it.</p>
         <p>The part that actually holds isn't discipline, it's a file. The conventions at the vault root tell the agent where notes go, how tasks are written, and what never to add. Curation is a config, not a mood.</p>
+
+        <figure class="wide"><p class="ob-cap">one weekly pass · what goes, what stays</p>
+<pre class="slop"><span class="gone">- It is important to note that this approach
+- offers several key advantages and can be
+- adapted to a variety of different contexts.
+
+- Overall, this represents a robust and scalable
+- solution that leverages industry best practices
+- to unlock significant value going forward.</span>
+
+<span class="kept">+ Rejected Postgres for the vault. Nobody to
++ run it but me. Files won. — 14 Jul</span>
+</pre>
+      <p class="slop-note">Six lines that survived a model and said nothing. One line that will still be worth reading in a year.</p></figure>
       </article>
 
       <article class="rule">
@@ -397,6 +492,37 @@ vault/
         <h3>Context you can't reach is context you don't have</h3>
         <p>A server sits in my apartment with no public address, behind NAT like everyone's. A small rented VPS is the meeting point: the server holds a tunnel to it, my phone holds a tunnel to it, and my phone lands inside my home network. The VPS computes nothing.</p>
         <p>After that it's just ssh. The session on the server doesn't die when I shut the laptop — I attach to the same screen from the street, and the agent has been working the whole way.</p>
+
+        <figure class="wide"><svg class="tangle" viewBox="0 0 560 430" role="img" aria-label="A small figure standing under a tangle of notes and threads, unable to reach any of them">
+        <g class="card">
+          <rect x="18" y="26" width="96" height="54" rx="4"/>
+          <rect x="196" y="10" width="96" height="54" rx="4"/>
+          <rect x="392" y="34" width="96" height="54" rx="4"/>
+          <rect x="452" y="150" width="96" height="54" rx="4"/>
+          <rect x="16" y="168" width="96" height="54" rx="4"/>
+          <rect x="404" y="278" width="96" height="54" rx="4"/>
+          <rect x="52" y="300" width="96" height="54" rx="4"/>
+        </g>
+        <g class="thread">
+          <path d="M114 53 C220 90 300 40 392 61"/>
+          <path d="M244 64 C250 160 190 210 100 195"/>
+          <path d="M440 61 C380 140 330 150 292 250"/>
+          <path d="M452 177 C360 200 300 170 244 64"/>
+          <path d="M64 222 C120 280 240 250 404 305"/>
+          <path d="M100 327 C170 280 210 200 292 250"/>
+          <path d="M452 177 C380 300 200 300 100 327"/>
+          <path d="M114 53 C180 190 320 210 500 278"/>
+          <path d="M292 250 C200 220 160 120 196 37"/>
+          <path d="M292 250 C400 240 430 200 500 204"/>
+        </g>
+        <g class="figure">
+          <circle cx="280" cy="290" r="15"/>
+          <path d="M266 312 L294 312 L300 372 L260 372 Z"/>
+          <path class="arm" d="M268 316 L242 276"/>
+          <path class="arm" d="M292 316 L318 276"/>
+        </g>
+      </svg>
+      <p class="slop-note">It is all written down. None of it is where you happen to be standing.</p></figure>
       </article>
     </div>
   </section>
@@ -459,6 +585,12 @@ vault/
       <h2>The agent is in the chat</h2>
       <p class="intro">A working chat is where requirements actually arrive — so that's where the agent should be.</p>
       <p>Through an MCP server, my agent reads and writes Telegram. It sits in the chats with the people I build for. They report what's broken in their own words: no ticket, no repro steps, no screenshot.</p>
+
+      <div class="agents">
+      <div class="agent">
+        <img src="agent-cypher_regan.jpg" alt="Cypher Regan" loading="lazy">
+        <div><b>Cypher Regan</b><span>keeps the archive</span></div>
+      </div>
       <p>I don't forward that message to the model. A complaint isn't a task — somebody has to decide what's actually broken, what to touch and what to leave alone. That stays my job. What the agent receives is the decision, and it reads the chat, the repository and the notes on its own. I never describe the project.</p>
       <p>Then it's a push to staging, a few minutes of CI, and a rule I don't bend: production waits for a human to say yes.</p>
     </div>
@@ -621,163 +753,24 @@ vault/
     <p class="slide-me">Mikhail Maximov · 19 August 2026</p>
   </article>
 
-  <article class="slide">
+  <article class="slide slide-rules">
     <p class="label">The idea</p>
     <h2>My ruleset when working with <em>AI</em></h2>
-    <p class="sub">The models can already hold more than I can. The bottleneck moved: does the material exist, is it still true, and can the model reach it.</p>
+    <div class="rules-row">
+      <div class="rule-col">
+        <p class="label">01 — Collect</p>
+        <p class="rule-line">Gather more context than feels reasonable. Meetings, voice notes, specs, decisions, ideas, research.</p>
+      </div>
+      <div class="rule-col">
+        <p class="label">02 — Curate</p>
+        <p class="rule-line">Context rots. Delete what's dead, fact-check what's new. Conventions live in a file, not in my head.</p>
+      </div>
+      <div class="rule-col">
+        <p class="label">03 — Reach</p>
+        <p class="rule-line">Context you can't reach is context you don't have. It has to be there when I'm not at a desk.</p>
+      </div>
+    </div>
     <p class="credit-line">Setup borrowed from <b>@levelsio</b> — one machine, no devops. The context layer is the part I added.</p>
-  </article>
-
-  <article class="slide slide-split slide-vault">
-    <div class="side">
-      <p class="label">01 — Collect</p>
-      <h2>Gather more context than feels reasonable</h2>
-      <p class="sub">Specs. Meeting transcripts. Voice notes. Decisions — including the ones I turned down.</p>
-    </div>
-    <div class="side">
-      <img class="ob-mark" src="obsidian.svg" alt="Obsidian">
-      <p class="ob-cap">Plain markdown in a git repository</p>
-<pre>
-vault/
-├── CLAUDE.md    <b>rules for the agent</b>
-├── agency/      <b>clients and briefs</b>
-├── products/    <b>side projects</b>
-├── work/        <b>day job</b>
-├── learning/    <b>notes by subject</b>
-├── personal/    <b>planning, health</b>
-├── finance/     <b>monthly reports</b>
-├── tasks/
-│   ├── weekly/  <b>three outcomes max</b>
-│   └── monthly/ <b>goals and retro</b>
-└── templates/   <b>shapes for new notes</b>
-</pre>
-    </div>
-  </article>
-
-  <article class="slide slide-diagram">
-    <p class="label">01 — Collect · how it lands</p>
-    <svg class="diagram" viewBox="0 0 980 400" role="img" aria-label="Meetings and voice notes are transcribed locally; specs, decisions, ideas and research are written straight into the vault; a weekly pass cleans it; agents read it">
-      <rect class="box" x="10" y="24" width="196" height="44" rx="6"/>
-      <text class="sm" x="108" y="52" text-anchor="middle">Meetings</text>
-      <rect class="box" x="10" y="84" width="196" height="44" rx="6"/>
-      <text class="sm" x="108" y="112" text-anchor="middle">Voice notes</text>
-      <rect class="box" x="10" y="144" width="196" height="44" rx="6"/>
-      <text class="sm" x="108" y="172" text-anchor="middle">Specs</text>
-      <rect class="box" x="10" y="204" width="196" height="44" rx="6"/>
-      <text class="sm" x="108" y="232" text-anchor="middle">Decisions</text>
-      <rect class="box" x="10" y="264" width="196" height="44" rx="6"/>
-      <text class="sm" x="108" y="292" text-anchor="middle">Ideas</text>
-      <rect class="box" x="10" y="324" width="196" height="44" rx="6"/>
-      <text class="sm" x="108" y="352" text-anchor="middle">Research</text>
-
-      <rect class="box" x="286" y="40" width="196" height="58" rx="6"/>
-      <text class="sm" x="384" y="67" text-anchor="middle">Transcribed</text>
-      <text class="tag" x="384" y="87" text-anchor="middle">on my own GPU</text>
-
-      <path class="wire" d="M211 46 L281 58" marker-end="url(#tip2)"/>
-      <path class="wire" d="M211 106 L281 80" marker-end="url(#tip2)"/>
-      <path class="wire" d="M487 69 L556 155" marker-end="url(#tip2)"/>
-      <path class="wire" d="M211 166 L556 178" marker-end="url(#tip2)"/>
-      <path class="wire" d="M211 226 L556 196" marker-end="url(#tip2)"/>
-      <path class="wire" d="M211 286 L556 214" marker-end="url(#tip2)"/>
-      <path class="wire" d="M211 346 L556 232" marker-end="url(#tip2)"/>
-
-      <rect class="box" x="562" y="120" width="180" height="150" rx="6"/>
-      <text class="ttl" x="652" y="180" text-anchor="middle">The vault</text>
-      <text class="sm" x="652" y="206" text-anchor="middle">markdown in git</text>
-
-      <path class="flow" d="M604 118 C604 56 700 56 700 118" marker-end="url(#tip3)"/>
-      <text class="tag" x="652" y="44" text-anchor="middle">weekly pass — delete, fact-check</text>
-
-      <rect class="box" x="806" y="150" width="164" height="90" rx="6"/>
-      <text class="ttl" x="888" y="190" text-anchor="middle">Agents</text>
-      <text class="sm" x="888" y="214" text-anchor="middle">read it</text>
-      <path class="flow" d="M747 195 L801 195" marker-end="url(#tip3)"/>
-
-      <text class="tag" x="490" y="388" text-anchor="middle">nothing leaves the flat until I decide it should</text>
-
-      <defs>
-        <marker id="tip2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-          <path d="M0 0 L10 5 L0 10 z" fill="#71736F"/>
-        </marker>
-        <marker id="tip3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-          <path d="M0 0 L10 5 L0 10 z" fill="#15171A"/>
-        </marker>
-      </defs>
-    </svg>
-    <div class="dgm-fallback">
-      <ul class="skills">
-        <li><span class="mono">Meetings, voice notes</span> — transcribed on my own GPU</li>
-        <li><span class="mono">Specs, decisions</span> — written straight in</li>
-        <li><span class="mono">Ideas, research</span> — same, before they are worth anything</li>
-        <li><span class="mono">The vault</span> — markdown in git</li>
-        <li><span class="mono">Weekly pass</span> — delete what's dead, fact-check what's new</li>
-        <li><span class="mono">Agents</span> — read all of it</li>
-      </ul>
-    </div>
-  </article>
-
-  <article class="slide slide-split slide-vault">
-    <div class="side">
-      <p class="label">02 — Curate</p>
-      <h2>Context <em>rots</em></h2>
-      <p class="sub">Delete what's dead, fact-check what's new. The conventions live in a file, not in my head.</p>
-    </div>
-    <div class="side">
-      <p class="ob-cap">one weekly pass · what goes, what stays</p>
-<pre class="slop"><span class="gone">- It is important to note that this approach
-- offers several key advantages and can be
-- adapted to a variety of different contexts.
-
-- Overall, this represents a robust and scalable
-- solution that leverages industry best practices
-- to unlock significant value going forward.</span>
-
-<span class="kept">+ Rejected Postgres for the vault. Nobody to
-+ run it but me. Files won. — 14 Jul</span>
-</pre>
-      <p class="slop-note">Six lines that survived a model and said nothing. One line that will still be worth reading in a year.</p>
-    </div>
-  </article>
-
-  <article class="slide slide-split slide-vault">
-    <div class="side">
-      <p class="label">03 — Reach</p>
-      <h2>Context you can't reach is context you don't have</h2>
-      <p class="sub">Phone, tunnel, the tower in my flat. After that it's just ssh — and the session never died.</p>
-    </div>
-    <div class="side">
-      <svg class="tangle" viewBox="0 0 560 430" role="img" aria-label="A small figure standing under a tangle of notes and threads, unable to reach any of them">
-        <g class="card">
-          <rect x="18" y="26" width="96" height="54" rx="4"/>
-          <rect x="196" y="10" width="96" height="54" rx="4"/>
-          <rect x="392" y="34" width="96" height="54" rx="4"/>
-          <rect x="452" y="150" width="96" height="54" rx="4"/>
-          <rect x="16" y="168" width="96" height="54" rx="4"/>
-          <rect x="404" y="278" width="96" height="54" rx="4"/>
-          <rect x="52" y="300" width="96" height="54" rx="4"/>
-        </g>
-        <g class="thread">
-          <path d="M114 53 C220 90 300 40 392 61"/>
-          <path d="M244 64 C250 160 190 210 100 195"/>
-          <path d="M440 61 C380 140 330 150 292 250"/>
-          <path d="M452 177 C360 200 300 170 244 64"/>
-          <path d="M64 222 C120 280 240 250 404 305"/>
-          <path d="M100 327 C170 280 210 200 292 250"/>
-          <path d="M452 177 C380 300 200 300 100 327"/>
-          <path d="M114 53 C180 190 320 210 500 278"/>
-          <path d="M292 250 C200 220 160 120 196 37"/>
-          <path d="M292 250 C400 240 430 200 500 204"/>
-        </g>
-        <g class="figure">
-          <circle cx="280" cy="290" r="15"/>
-          <path d="M266 312 L294 312 L300 372 L260 372 Z"/>
-          <path class="arm" d="M268 316 L242 276"/>
-          <path class="arm" d="M292 316 L318 276"/>
-        </g>
-      </svg>
-      <p class="slop-note">It is all written down. None of it is where you happen to be standing.</p>
-    </div>
   </article>
 
   <article class="slide slide-diagram">
@@ -826,36 +819,6 @@ vault/
         <div class="hop"><h3>Home server</h3><p>behind NAT · tmux · agents · repos</p></div>
       </div>
       <p class="sub">Neither side needs an open port. After that it is just ssh.</p>
-    </div>
-  </article>
-
-  <article class="slide slide-split">
-    <img src="server.jpg" alt="The server: a tower on the floor with a phone wired to it">
-    <div class="side">
-      <p class="label">The hardware</p>
-      <h2>A tower on the <em>floor</em></h2>
-      <ul class="skills spec">
-        <li><span class="mono">CPU</span> — Ryzen 5 3600</li>
-        <li><span class="mono">GPU</span> — GTX 1660, 6 GB</li>
-        <li><span class="mono">Memory</span> — 32 GB</li>
-        <li><span class="mono">Phone</span> — Pixel 3a on USB, driven by adb</li>
-      </ul>
-    </div>
-  </article>
-
-  <article class="slide">
-    <p class="label">What it buys</p>
-    <h2>The agent is <em>in the chat</em></h2>
-    <p class="sub">A complaint is not a task. Deciding what's broken stays my job — what the agent gets is the decision.</p>
-    <div class="agents">
-      <div class="agent">
-        <img src="agent-cypher_regan.jpg" alt="Cypher Regan" loading="lazy">
-        <div><b>Cypher Regan</b><span>keeps the archive</span></div>
-      </div>
-      <div class="agent">
-        <img src="agent-morpheus_cypher.jpg" alt="Morpheus" loading="lazy">
-        <div><b>Morpheus</b><span>asks the awkward questions</span></div>
-      </div>
     </div>
   </article>
 
