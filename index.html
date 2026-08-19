@@ -112,6 +112,11 @@
   pre b{font-weight:400;color:var(--mute)}
   figcaption{font-family:var(--mono);font-size:.68rem;color:var(--mute);margin-top:.7rem;line-height:1.6}
 
+  .spec{margin-top:1.7rem;border-top:1px solid var(--rule)}
+
+  .shot{margin:1.9rem 0 0;max-width:22rem}
+  .shot img{display:block;width:100%;height:auto;border:1px solid var(--edge)}
+
   /* ---------- route ---------- */
   .route{margin:2rem 0 0;max-width:23rem}
   .hop{border:1px solid var(--edge);background:#fff;padding:.85rem 1rem}
@@ -280,6 +285,31 @@ vault/
         </div>
       </div>
       <p>Both peers dial out to the VPS, so neither needs an open port. Once the tunnel is up my phone is on the same network as my living room, and everything after that is ordinary ssh into a session that was already running.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="label">The hardware</p>
+      <h2>The server is a tower on the floor</h2>
+      <p class="intro">No rack, no datacenter, no provider. It stands in the corner of my apartment, and this is honestly what it looks like.</p>
+
+      <figure class="shot">
+        <img src="server.jpg" alt="A black tower PC standing on a wooden floor, a phone leaning against it on a USB cable, Bionicle figures around it" width="900" height="1263" loading="lazy">
+        <figcaption>In the frame: the tower itself, a Pixel 3a propped against it on a USB cable, and four Bionicles holding the perimeter. Nothing in this picture is staged, including the Bionicles.</figcaption>
+      </figure>
+
+      <ul class="skills spec">
+        <li><span class="mono">CPU</span> — AMD Ryzen 5 3600, 6 cores / 12 threads</li>
+        <li><span class="mono">Memory</span> — 32 GB</li>
+        <li><span class="mono">GPU</span> — NVIDIA GTX 1660, 6 GB</li>
+        <li><span class="mono">Storage</span> — 120 GB system SSD, plus a 1 TB drive for data</li>
+        <li><span class="mono">OS</span> — Ubuntu 24.04 LTS</li>
+      </ul>
+
+      <p>Six gigabytes of video memory is the real constraint here, and it decides more than anything else on this page: one model is warm at a time, so speech-to-text and the language model take turns rather than sharing the card. Everything in the setup is shaped around that limit.</p>
+
+      <p>The phone in the photo is not the one I demo from. That one is an old <strong>Pixel 3a</strong>, wired to the server over USB and driven with <code>adb</code> — a phone agent. The phone is the hands, the server is the head. It exists to reach the things that have no API: notifications, and apps that never exposed a public interface.</p>
     </div>
   </section>
 
